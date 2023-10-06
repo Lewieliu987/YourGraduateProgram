@@ -11,5 +11,3 @@ Update/Add filename_developername
 
 #### Delete
 Please delete a file in your own 
- lzh sbbb
- wzx dsb
