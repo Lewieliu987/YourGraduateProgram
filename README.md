@@ -10,4 +10,7 @@ When you add or update a file, please commit as
 Update/Add filename_developername
 
 #### Delete
-Please delete a file in your own 
+Please delete a file in your own direction first
+
+#### Test
+When you write your test file, please name it as TestFilename, here Filename is the name of the file that you want to test using Junit
