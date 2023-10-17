@@ -1,14 +1,17 @@
-public class Recommendation extends Value{
-    private int professor_level;
-    private int quality;
+import java.util.ArrayList;
 
-    public Recommendation()
+public class Recommendation extends Value{
+    private ArrayList<EveryRecommendation> recommendations;
+    public Recommendation(ArrayList<EveryRecommendation> recommendations)
     {
-        double my_weight;
-        super(my_weight);
+        // 需要具体权重
+        super();
+        this.recommendations = recommendations;
     }
     public double calculateWeightedValue()
     {
-
+        // 需要具体公式
+        double result;
+        return result;
     }
 }

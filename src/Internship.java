@@ -1,8 +1,17 @@
+import java.util.ArrayList;
+
 public class Internship extends Value{
-    private int company_level;
-    private double time;
+    private ArrayList<EveryInternship> internships;
+    public Internship(ArrayList<EveryInternship> internships)
+    {
+        super();
+        this.internships = internships;
+
+    }
     public double calculateWeightedValue()
     {
-
+        //需要具体公式
+        double result;
+        retunr result;
     }
 }
