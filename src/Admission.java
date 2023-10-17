@@ -1,6 +1,5 @@
 public class Admission {
     private University university;
-    private String major;
+    private Major major;
     private double probability;
-    
 }
