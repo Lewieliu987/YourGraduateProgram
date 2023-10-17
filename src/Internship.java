@@ -12,6 +12,6 @@ public class Internship extends Value{
     {
         //需要具体公式
         double result;
-        retunr result;
+        return result;
     }
 }
