@@ -35,3 +35,15 @@ public abstract class User {
         this.name = newName;
     }
 }
+
+// UserInput.java: student/admin?
+// 1. id 666/888
+// 2. isAdmin false/true
+
+// Database record User id
+// 一开始只有simple
+// Register 创建了一个实例
+// name password -> id isAdmin
+// id/name + password
+
+// Login: id + password 去找 -> liuzihan 查找这个实例

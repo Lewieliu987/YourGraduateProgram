@@ -19,7 +19,7 @@ public class Student extends User{
     // 添加Student的其他方法
     public void getMyAdmission()
     {
-
+        
     }
 
 }
