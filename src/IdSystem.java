@@ -28,6 +28,7 @@ public class IdSystem {
         return newId;
     }
 
+    // 在user这个数据库里面， 应该有entry：id，isAdmin
     public int generateUniversityId()
     {
         int newId = 666000 + numberOfUniversity;

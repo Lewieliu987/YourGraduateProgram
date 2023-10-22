@@ -1,3 +1,3 @@
 public interface UserInput {
-    void inputUser(User user);
+    public void inputUser(User user);
 }
