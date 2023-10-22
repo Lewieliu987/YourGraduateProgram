@@ -4,9 +4,12 @@ public abstract class User {
     private String password;
     private boolean isAdmin;
 
-    // Constructor
-    public User(String name, String password, boolean isAdmin)
-    {
+    public User() {
+
+    }
+
+    // Constructor for registration
+    public User(String name, String password, boolean isAdmin) {
         IdSystem ids = IdSystem.getInstance();
         this.id = ids.generateUserId();
         this.name = name;
@@ -14,25 +17,32 @@ public abstract class User {
         this.isAdmin = isAdmin;
     }
 
-    public int getId()
-    {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPassword(String password) {
+
+    }
+
+    public int getId() {
         return id;
     }
 
-    public boolean getIdentity()
-    {
+    public boolean getIdentity() {
         return isAdmin;
     }
 
-    public void resetPassword(String newPassword)
-    {
+    public void resetPassword(String newPassword) {
         this.password = newPassword;
-        //需要print“完成”
+        // 需要print“完成”
     }
 
-    public void resetName(String newName)
-    {
+    public void resetName(String newName) {
         this.name = newName;
+    }
+
+    public void calculate() {
     }
 }
 
