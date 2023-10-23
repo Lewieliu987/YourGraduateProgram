@@ -1,5 +1,5 @@
 // each object represents one single row of datapoints database
-
+package Other;
 public class Datapoint {
     private int tier_admission_university;
     private int tier_background_university;
