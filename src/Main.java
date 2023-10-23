@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+       
         Scanner scanner = new Scanner(System.in);
         System.out.println("Log in or Register?");
         String answer = scanner.next();// 选择登录还是注册

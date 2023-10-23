@@ -1,4 +1,16 @@
-public interface NaiveBayes {
-    Admission predict(User user);
-    // 需要具体实现
+import java.util.ArrayList;
+
+public abstract class NaiveBayes {
+    private ArrayList<Parameter> ps;
+
+    public NaiveBayes(){
+        ps = new ArrayList<Parameter>();
+
+        for(int i = 1; i<=5; i++){
+            Parameter p = new Parameter(i);
+            ps.add(p);
+        }
+    }
+
+
 }
