@@ -16,6 +16,10 @@ public class Datapoint {
     // Number of International publication
     private int num_paper;
 
+    private WeightedGPA wgpa;
+    
+    private WeightedOthers wothers;
+
     public Datapoint(int tier1, int tier2, double gpa1, double gpa2, int num1, int num2, int num3){
         tier_admission_university = tier1;
         tier_background_university = tier2;
@@ -24,6 +28,9 @@ public class Datapoint {
         num_LoR = num1;
         num_intern = num2;
         num_paper = num3;
+        wgpa = new WeightedGPA(gpa1, gpa2);
+        wothers = new WeightedOthers(num1, num2, num3);
+
     }
 
     public int getTierAdmission(){
@@ -52,5 +59,13 @@ public class Datapoint {
 
     public int getNumPaper(){
         return num_paper;
+    }
+
+    public double getweightedG(){
+        return wgpa.getWeighted();
+    }
+
+    public double getweighedO(){
+        return wothers.getWeighted();
     }
 }

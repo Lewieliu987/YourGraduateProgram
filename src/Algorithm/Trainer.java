@@ -6,12 +6,22 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import Other.Datapoint;
+import Other.datapointsAtier;
 
 public class Trainer extends NaiveBayes{
+
     private ArrayList<Datapoint> database;
+    private ArrayList<datapointsAtier> fiveDataTiers;
 
     public Trainer(){
-        File csv = new File(filePath);
+        // load parameters storded in database
+        super();
+
+        database = new ArrayList<Datapoint>();
+        fiveDataTiers = new ArrayList<>();
+
+        // load database for training
+        File csv = new File("./database/datapoints.csv");
         csv.setReadable(true);
         csv.setWritable(true);
         InputStreamReader isr = null;
@@ -26,13 +36,59 @@ public class Trainer extends NaiveBayes{
         ArrayList<String> records = new ArrayList<>();
         try {
             while ((line = br.readLine()) != null) {
-                System.out.println(line);
                 records.add(line);
             }
-            System.out.println("csv表格读取行数：" + records.size());
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
 
+        for(int i =1;i<records.size();i++){
+            int[] ints = new int[5];
+            Double[] d = new Double[2];
+
+            for (int x=1;x<=2;x++){
+                ints[x-1] = Integer.parseInt(records.get(i).split(",")[x]);       
+            }
+            for (int x=3;x<=4;x++){
+                d[x-3] = Double.valueOf(records.get(i).split(",")[x]);       
+            }
+            for (int x=5;x<=7;x++){
+                ints[x-3] = Integer.parseInt(records.get(i).split(",")[x]);       
+            }
+            database.add(new Datapoint(ints[0], ints[1], d[0], d[1], ints[2], ints[3], ints[4]));
+        }
+
+        // reorganize datapoints to 5 tiers
+        for(int x=1;x<=5;x++){
+            fiveDataTiers.add(new datapointsAtier(x, database));
+        }
+
     }
+
+    //train ps bases on the current database
+    public void trainParameters(){
+        for(int x =0;x<5;x++){
+            // update conditional prob
+            this.getps().get(x).setP1(fiveDataTiers.get(x).computeP1());
+            this.getps().get(x).setP2(fiveDataTiers.get(x).computeP2());
+            this.getps().get(x).setP3(fiveDataTiers.get(x).computeP3());
+            this.getps().get(x).setP4(fiveDataTiers.get(x).computeP4());
+            this.getps().get(x).setP5(fiveDataTiers.get(x).computeP5());
+
+            // update guassian for GPA
+            this.getps().get(x).setMeanGPA(fiveDataTiers.get(x).computeMeanG());
+            this.getps().get(x).setsdGPA(fiveDataTiers.get(x).computeSdG());
+
+            // update guassian for Others
+            this.getps().get(x).setMeanOthers(fiveDataTiers.get(x).computeMeanO());
+            this.getps().get(x).setsdOthers(fiveDataTiers.get(x).computeSdO());
+        }
+    }
+
+    //update ps to parameters database
+    public void updateParameters(){
+        
+    }
+
 }

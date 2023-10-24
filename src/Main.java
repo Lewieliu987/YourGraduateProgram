@@ -1,9 +1,11 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Algorithm.Trainer;
+
 public class Main {
     public static void main(String[] args) {
-       
+        Trainer t = new Trainer();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Log in or Register?");
         String answer = scanner.next();// 选择登录还是注册
