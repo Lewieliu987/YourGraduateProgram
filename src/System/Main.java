@@ -1,5 +1,4 @@
 package System;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 import Algorithm.Trainer;
@@ -7,7 +6,6 @@ import Database.DatabaseForUser;
 import User.Admin;
 import User.Student;
 import User.User;
-import User.UserInput;
 import User.UserInputStudent;
 
 public class Main {
@@ -35,7 +33,7 @@ public class Main {
                 if (password.equals(user.getPassword())) {
                     if(!user.getPermission()){
                         // 对于该user，用while循环，执行指令直到exit
-                        studentServiceLoop:
+                        // studentServiceLoop:
                         while (true) {
                         // 1. 更改基本信息 2. 更改申请信息 3. 查看录取概率 4. 退出
                             System.out.print("Welcome, " + user.getUsername() + "\n" + "Please enter one of the following number to use services:" + "\n" +
@@ -64,7 +62,7 @@ public class Main {
                         }      
                     } 
                     else{
-                        adminServiceLoop:
+                        // adminServiceLoop:
                         while(true){
                         // 1. 更改基本信息 2. 更改User数据库 3. 更改University数据库 4. 退出
                         }
