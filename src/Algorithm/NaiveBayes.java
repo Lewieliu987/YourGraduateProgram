@@ -14,5 +14,9 @@ public abstract class NaiveBayes {
         }
     }
 
+    public ArrayList<Parameter> getps(){
+        return ps;
+    }
+
 
 }
