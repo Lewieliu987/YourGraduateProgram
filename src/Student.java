@@ -16,9 +16,6 @@ public class Student extends User {
         super(name, password, false);
     }
 
-    public Student() {
-    }
-
     // Setter method for my_Major
     public void setMyMajor(Major major) {
         this.my_Major = major;
