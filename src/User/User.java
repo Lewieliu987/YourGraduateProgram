@@ -52,6 +52,10 @@ public abstract class User {
         this.name = newName;
     }
 
+    public boolean getPermission(){
+        return isAdmin;
+    }
+
     public void calculate() {
     }
 }
