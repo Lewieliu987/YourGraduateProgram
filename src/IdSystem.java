@@ -1,36 +1,43 @@
 import java.util.ArrayList;
 
 public class IdSystem {
-    private ArrayList<Integer> AllUserId;
+    private ArrayList<Integer> AllStudentId;
+    private ArrayList<Integer> AllAdminId;
     private ArrayList<Integer> AllUniversityId;
-    private int numberOfUser;
+    private int numberOfStudent;
+    private int numberOfAdmin;
     private int numberOfUniversity;
     private static IdSystem instance = new IdSystem(); // 创建静态实例
 
-    public IdSystem()
-    {
-        AllUserId = new ArrayList<Integer>();
+    public IdSystem() {
+        AllStudentId = new ArrayList<Integer>();
+        AllAdminId = new ArrayList<Integer>();
         AllUniversityId = new ArrayList<Integer>();
-        numberOfUser = 0;
+        numberOfStudent = 0;
+        numberOfAdmin = 0;
         numberOfUniversity = 0;
     }
 
-    public static IdSystem getInstance()
-    {
+    public static IdSystem getInstance() {
         return instance;
     }
 
-    public int generateUserId()
-    {
-        int newId = 241000 + numberOfUser;
-        numberOfUser++;
-        AllUserId.add(newId);
-        return newId;
+    public int generateUserId(boolean isAdmin) {
+        if (isAdmin) {
+            int newId = 341000 + numberOfAdmin;
+            numberOfStudent++;
+            AllAdminId.add(newId);
+            return newId;
+        } else {
+            int newId = 241000 + numberOfStudent;
+            numberOfStudent++;
+            AllStudentId.add(newId);
+            return newId;
+        }
     }
 
     // 在user这个数据库里面， 应该有entry：id，isAdmin
-    public int generateUniversityId()
-    {
+    public int generateUniversityId() {
         int newId = 666000 + numberOfUniversity;
         numberOfUniversity++;
         AllUniversityId.add(newId);
@@ -39,8 +46,7 @@ public class IdSystem {
 
     // 不同学校会有相同的项目编码规则吗？
     // 取项目名称的所有大写字母
-    public String generateProgramId()
-    {
+    public String generateProgramId() {
         String newId = "";
         return newId;
     }

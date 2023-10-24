@@ -24,6 +24,10 @@ public class Student extends User {
         this.my_Major = major;
     }
 
+    public void getMyAdmission() {
+        // 等王子轩
+    }
+
     // Setter method for perferRegion
     public void setPerferRegion(String region) {
         this.perferRegion = region;

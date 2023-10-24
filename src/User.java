@@ -11,7 +11,7 @@ public abstract class User {
     // Constructor for registration
     public User(String name, String password, boolean isAdmin) {
         IdSystem ids = IdSystem.getInstance();
-        this.id = ids.generateUserId();
+        this.id = ids.generateUserId(isAdmin);
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;
@@ -23,6 +23,14 @@ public abstract class User {
 
     public void setPassword(String password) {
 
+    }
+
+    public String getUsername() {
+        return this.name;
+    }
+
+    public String getPassword() {
+        return this.password;
     }
 
     public int getId() {
