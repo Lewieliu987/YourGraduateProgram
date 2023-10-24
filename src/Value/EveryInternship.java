@@ -2,10 +2,15 @@ package Value;
 public class EveryInternship
 {
     // 每一段实习
-    private String company_level;
+    private int company_level;
     private double time_interval;
 
-    public String getCompanyLevel() {
+    public EveryInternship(int company_level, double time_interval) {
+        this.company_level = company_level;
+        this.time_interval = time_interval;
+    }
+
+    public int getCompanyLevel() {
         return company_level;
     }
 

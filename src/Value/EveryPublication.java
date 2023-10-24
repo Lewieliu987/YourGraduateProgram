@@ -1,9 +1,13 @@
 package Value;
 public class EveryPublication {
     // 每一篇发表
-    private String level;
+    private int level;
 
-    public String getLevel() {
+    public EveryPublication(int level) {
+        this.level = level;
+    }
+
+    public int getLevel() {
         return level;
     }
 }

@@ -19,9 +19,9 @@ public class Main {
         String answer = scanner.next();// 选择登录还是注册
 
         User user;
-        UserInput input;// 输入方法对象
         DatabaseForUser dfu = DatabaseForUser.getInstance();
-        if (answer == "log in") {
+
+        if (answer == "log in") {// search user in DatabaseForUser using id & password
             System.out.println("Please enter your id and password");
             int id = scanner.nextInt();
             String password = scanner.next();
@@ -38,9 +38,9 @@ public class Main {
                     String choice = scanner.next();
                     switch (choice) {
                         case "1":
+                            System.out.println("Please enter your new name and password");
                             user.setName(scanner.next());
                             user.setPassword(scanner.next());
-                            // 引导语没写
                         case "2":
                             UserInputStudent inputStudent = new UserInputStudent();
                             inputStudent.inputUser(user);
@@ -54,7 +54,8 @@ public class Main {
                     break;
                 }
             }
-        } else if (answer == "Register") {// input name, password, return id;
+        } 
+        else if (answer == "Register") {// input name, password, generate user;
             System.out.println("Please enter your role");
             String role = scanner.next();
             System.out.println("Please enter your name");
@@ -69,5 +70,7 @@ public class Main {
             }
             // 开始while循环
         }
+
+        scanner.close();
     }
 }

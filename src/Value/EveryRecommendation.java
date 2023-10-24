@@ -2,14 +2,20 @@ package Value;
 public class EveryRecommendation
 {
     // 每一封推荐信
-    private String professor_level;
-    private String quanlity;
+    private int professor_level;
+    private int quality;
 
-    public String getProfessorLevel() {
+    public EveryRecommendation(int professor_level, int quality)
+    {
+        this.professor_level = professor_level;
+        this.quality = quality;
+    }
+
+    public int getProfessorLevel() {
         return professor_level;
     }
 
-    public String getQuanlity() {
-        return quanlity;
+    public int getQuality() {
+        return quality;
     }
 }

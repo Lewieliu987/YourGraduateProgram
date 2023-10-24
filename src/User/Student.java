@@ -1,4 +1,7 @@
 package User;
+import Value.EveryInternship;
+import Value.EveryPublication;
+import Value.EveryRecommendation;
 import Value.Gpa;
 import Value.Internship;
 import Value.LanguageScore;
@@ -9,11 +12,12 @@ import Value.Recommendation;
 public class Student extends User {
     // personal info
     private Major my_Major;
+    private int homeSchoolRank;
     // filter condition
-    private String perferRegion;
+    private int applicationType;
+    private String preferRegion;
     private double preferTuitionFee;
     // value
-    private int homeSchoolRank;
     private Gpa my_Gpa;
     private LanguageScore my_LanguageScore;
     private Recommendation my_Recommendation;
@@ -30,16 +34,35 @@ public class Student extends User {
     }
 
     // Setter method for perferRegion
-    public void setPerferRegion(String region) {
-        this.perferRegion = region;
+    public void setMyPreferRegion(int regionCode) {
+        switch(regionCode){
+            case 1:
+                this.preferRegion = "USA";
+                break;
+            case 2: 
+                this.preferRegion = "UK";
+                break;
+            case 3:
+                this.preferRegion = "Europe";
+                break;
+            case 4:
+                this.preferRegion = "Japan";
+                break;
+            case 5:
+                this.preferRegion = "Hong Kong & Singapore";
+                break;
+            case 6:
+                this.preferRegion = "China Mainland";
+                break;
+        };
     }
 
     // Setter method for preferTuitionFee
-    public void setPreferTuitionFee(double tuitionFee) {
+    public void setMyPreferTuitionFee(double tuitionFee) {
         this.preferTuitionFee = tuitionFee;
     }
 
-    public void setHomeSchoolRank(int rank) {
+    public void setMyHomeSchoolRank(int rank) {
         this.homeSchoolRank = rank;
     }
 
@@ -54,11 +77,32 @@ public class Student extends User {
     }
 
     // Setter method for my_Recommendation
-    public void setMyRecommendation(Recommendation recommendation) {
-        this.my_Recommendation = recommendation;
+    public void setMyRecommendation(int prof_level, int quality) {
+        this.my_Recommendation.addRecommendation(new EveryRecommendation(prof_level, quality));
+    }
+
+    public void setMyInternship(int company_level, double duration) {
+        this.my_Internship.addInternship(new EveryInternship(company_level, duration));
+    }
+
+    public void setMyPublication(int level) {
+        this.my_Publication.addPublication(new EveryPublication(level));
+    }
+
+    public void setMyApplicationType(String applicationType) {
+        switch(applicationType){
+            case "Master":
+                this.applicationType = 1;
+                break;
+            case "PhD":
+                this.applicationType = 2;
+                break;
+        }
     }
 
     public void getMyAdmission() {
         // 等王子轩
     }
+
+
 }

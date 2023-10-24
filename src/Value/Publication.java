@@ -7,6 +7,9 @@ public class Publication{
     {
         this.publications = publications;
     }
+    public void addPublication(EveryPublication publication) {
+        publications.add(publication);
+    }
 
     // 需要遍历函数
 }

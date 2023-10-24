@@ -7,5 +7,11 @@ public class Recommendation{
     {
         this.recommendations = recommendations;
     }
+
+    public void addRecommendation(EveryRecommendation recommendation)
+    {
+        recommendations.add(recommendation);
+    }
     // 需要遍历函数
+
 }
