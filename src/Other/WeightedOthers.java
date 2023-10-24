@@ -5,9 +5,9 @@ public class WeightedOthers {
     private int num_intern;
     private int num_paper;
 
-    private double weightForl = 0.4;
-    private double weightFori = 0.3;
-    private double weightForp = 0.3;
+    private double weightForl = 1;
+    private double weightFori = 1;
+    private double weightForp = 2;
 
     public WeightedOthers(int l, int i, int p){
         num_intern = i;
