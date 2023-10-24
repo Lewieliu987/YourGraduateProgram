@@ -7,6 +7,7 @@ public abstract class NaiveBayes {
     public NaiveBayes(){
         ps = new ArrayList<Parameter>();
 
+        // in parameter.java, each 
         for(int i = 1; i<=5; i++){
             Parameter p = new Parameter(i);
             ps.add(p);
