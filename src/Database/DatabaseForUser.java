@@ -1,7 +1,7 @@
 package Database;
 import java.util.ArrayList;
 
-import User;
+import User.User;
 
 public class DatabaseForUser {
     private ArrayList<User> AllUsers;
@@ -16,11 +16,16 @@ public class DatabaseForUser {
     }
 
     public User findUser(int id){
-        for(int i; i<AllUsers.size(); i++){
+        for(int i=0; i<AllUsers.size(); i++){
             if(AllUsers.get(i).getId()==id){
                 return AllUsers.get(i);
             }
     }
+}
+
+    public void addUser(User user) {
+        AllUsers.add(user);
+    }
+}
 
     // 以下代码读入excel文件
-}

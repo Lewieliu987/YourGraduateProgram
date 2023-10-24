@@ -1,4 +1,8 @@
+package User;
 import java.util.Scanner;
+
+import Value.Gpa;
+import Value.LanguageScore;
 
 public class UserInputStudent implements UserInput {
 

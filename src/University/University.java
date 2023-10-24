@@ -1,4 +1,7 @@
+package University;
 import java.util.ArrayList;
+
+import System.IdSystem;
 public class University {
     private int id;
     private String name;

@@ -1,17 +1,11 @@
+package Value;
 import java.util.ArrayList;
 
-public class Internship extends Value{
+public class Internship{
     private ArrayList<EveryInternship> internships;
     public Internship(ArrayList<EveryInternship> internships)
     {
-        super();
         this.internships = internships;
-
     }
-    public double calculateWeightedValue()
-    {
-        //需要具体公式
-        double result;
-        return result;
-    }
+    // 需要遍历函数
 }

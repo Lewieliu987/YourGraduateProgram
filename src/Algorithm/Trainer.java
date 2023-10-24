@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import Other.Datapoint;
-import Other.datapointsAtier;
+import Other.DatapointsAtier;
 
 public class Trainer extends NaiveBayes{
 
     private ArrayList<Datapoint> database;
-    private ArrayList<datapointsAtier> fiveDataTiers;
+    private ArrayList<DatapointsAtier> fiveDataTiers;
 
     public Trainer(){
         // load parameters storded in database
@@ -61,7 +61,7 @@ public class Trainer extends NaiveBayes{
 
         // reorganize datapoints to 5 tiers
         for(int x=1;x<=5;x++){
-            fiveDataTiers.add(new datapointsAtier(x, database));
+            fiveDataTiers.add(new DatapointsAtier(x, database));
         }
 
     }

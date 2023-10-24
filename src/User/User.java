@@ -1,3 +1,6 @@
+package User;
+import System.IdSystem;
+import Database.DatabaseForUser;
 
 public abstract class User {
     private int id;
@@ -5,17 +8,15 @@ public abstract class User {
     private String password;
     private boolean isAdmin;
 
-    public User() {
-
-    }
-
     // Constructor for registration
     public User(String name, String password, boolean isAdmin) {
         IdSystem ids = IdSystem.getInstance();
+        DatabaseForUser dfu = DatabaseForUser.getInstance();
         this.id = ids.generateUserId(isAdmin);
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;
+        dfu.addUser(this);
     }
 
     public void setName(String name) {

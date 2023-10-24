@@ -1,3 +1,6 @@
+package University;
+import Value.Major;
+
 public class Program {
     private String id;
     private String name;

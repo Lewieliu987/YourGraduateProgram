@@ -1,11 +1,19 @@
+package System;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Algorithm.Trainer;
 import Database.DatabaseForUser;
+import User.Admin;
+import User.Student;
+import User.User;
+import User.UserInput;
+import User.UserInputStudent;
 
 public class Main {
     public static void main(String[] args) {
-
+        Trainer t = new Trainer();
+        t.trainParameters();
         Scanner scanner = new Scanner(System.in);
         System.out.println("Log in or Register?");
         String answer = scanner.next();// 选择登录还是注册
@@ -53,18 +61,13 @@ public class Main {
             String name = scanner.next();
             System.out.println("Please set your password");
             String password = scanner.next();
+            // 用IdSystem生成id，然后存入DatabaseForUser数据库
             if (role == "admin") {
                 user = new Admin(name, password);
             } else if (role == "student") {
                 user = new Student(name, password);
             }
-            // 用IdSystem生成id，然后存入DatabaseForUser数据库
+            // 开始while循环
         }
-        user = new Student();// just for java syntax requirements
-        input = new UserInputStudent();// just for java syntax requirements
-        input.inputUser(user);// 开始输入
-
-        // assume the weight has been calculated already
-        user.calculate();
     }
 }

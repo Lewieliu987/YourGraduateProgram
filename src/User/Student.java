@@ -1,3 +1,11 @@
+package User;
+import Value.Gpa;
+import Value.Internship;
+import Value.LanguageScore;
+import Value.Major;
+import Value.Publication;
+import Value.Recommendation;
+
 public class Student extends User {
     // personal info
     private Major my_Major;
@@ -19,10 +27,6 @@ public class Student extends User {
     // Setter method for my_Major
     public void setMyMajor(Major major) {
         this.my_Major = major;
-    }
-
-    public void getMyAdmission() {
-        // 等王子轩
     }
 
     // Setter method for perferRegion
@@ -52,5 +56,9 @@ public class Student extends User {
     // Setter method for my_Recommendation
     public void setMyRecommendation(Recommendation recommendation) {
         this.my_Recommendation = recommendation;
+    }
+
+    public void getMyAdmission() {
+        // 等王子轩
     }
 }

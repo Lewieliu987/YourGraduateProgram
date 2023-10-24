@@ -1,4 +1,5 @@
-public class Gpa extends Value{
+package Value;
+public class Gpa{
     private double cgpa;
     private double major_gpa;
     
@@ -8,9 +9,12 @@ public class Gpa extends Value{
         this.cgpa = cgpa;
         this.major_gpa = major_gpa;
     }
-    public double calculateWeightedValue()
-    {
-        double result = weightForC*cgpa + (1-weightForC)*major_gpa;
-        return result;
+
+    public double getCgpa() {
+        return cgpa;
+    }
+
+    public double getMajor_gpa() {
+        return major_gpa;
     }
 }
