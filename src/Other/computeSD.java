@@ -1,4 +1,4 @@
 package Other;
-public class computeSD {
+public class ComputeSD {
     
 }

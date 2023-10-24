@@ -1,4 +1,4 @@
 package Other;
-public class computeMean {
+public class ComputeMean {
     
 }
