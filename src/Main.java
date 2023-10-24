@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Database.DatabaseForUser;
+
 public class Main {
     public static void main(String[] args) {
 

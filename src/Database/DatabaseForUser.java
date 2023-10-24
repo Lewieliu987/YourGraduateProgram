@@ -1,4 +1,7 @@
+package Database;
 import java.util.ArrayList;
+
+import User;
 
 public class DatabaseForUser {
     private ArrayList<User> AllUsers;
