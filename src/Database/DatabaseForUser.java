@@ -15,6 +15,10 @@ public class DatabaseForUser {
         return instance;
     }
 
+    public void addUser(User user) {
+        AllUsers.add(user);
+    }
+
     public User findUser(int id){
         for(int i=0; i<AllUsers.size(); i++){
             if(AllUsers.get(i).getId()==id){
@@ -22,10 +26,7 @@ public class DatabaseForUser {
             }
     }
 }
+    //以下代码读入csv
 
-    public void addUser(User user) {
-        AllUsers.add(user);
-    }
 }
 
-    // 以下代码读入excel文件

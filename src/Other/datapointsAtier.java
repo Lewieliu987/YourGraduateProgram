@@ -87,7 +87,7 @@ public class DatapointsAtier {
             Ds[x] = datapoints.get(x).getweightedG();
         }
 
-        computeMean c = new computeMean(Ds);
+        ComputeMean c = new ComputeMean(Ds);
         return c.getMean();
     }
 
@@ -97,7 +97,7 @@ public class DatapointsAtier {
             Ds[x] = datapoints.get(x).getweighedO();
         }
 
-        computeMean c = new computeMean(Ds);
+        ComputeMean c = new ComputeMean(Ds);
         return c.getMean();
     }
 
@@ -107,7 +107,7 @@ public class DatapointsAtier {
             Ds[x] = datapoints.get(x).getweightedG();
         }
 
-        computeSD c = new computeSD(Ds);
+        ComputeSD c = new ComputeSD(Ds);
         return c.getSD();
     }
 
@@ -117,7 +117,7 @@ public class DatapointsAtier {
             Ds[x] = datapoints.get(x).getweighedO();
         }
 
-        computeSD c = new computeSD(Ds);
+        ComputeSD c = new ComputeSD(Ds);
         return c.getSD();
     }
 
