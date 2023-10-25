@@ -24,7 +24,7 @@ public abstract class User {
     }
 
     public void setPassword(String password) {
-
+        this.password = password;
     }
 
     public String getUsername() {
@@ -39,13 +39,12 @@ public abstract class User {
         return id;
     }
 
-    public boolean getIdentity() {
+    public boolean getRole() {
         return isAdmin;
     }
 
     public void resetPassword(String newPassword) {
         this.password = newPassword;
-        // 需要print“完成”
     }
 
     public void resetName(String newName) {

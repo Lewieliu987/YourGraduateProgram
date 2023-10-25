@@ -16,7 +16,11 @@ public class DatabaseForUser {
     }
 
     public void addUser(User user) {
-        AllUsers.add(user);
+        if(findUser(user.getId())==null)
+        {
+            AllUsers.add(user);
+        }// 若找到用户，需添加exception(duplicate)
+        
     }
 
     public User findUser(int id){
@@ -27,7 +31,11 @@ public class DatabaseForUser {
     }
         return null;
 }
-    //以下代码读/写入csv
-    
+    public void deleteUser(int idToDelete) {
+        if(findUser(idToDelete) != null){
+            AllUsers.remove(findUser(idToDelete));
+        }// 若没找到用户，需添加exception
+    }
+        //以下代码读/写入csv
 }
 
