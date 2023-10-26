@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
+import Exceptions.DuplicateUniversityException;
 import University.University;
 
 public class DatabaseForUniversity extends Database {
@@ -21,15 +22,18 @@ public class DatabaseForUniversity extends Database {
         return instance;
     }
 
-    public void addUniversity(University university) {
-        if (findUniversity(university.getName()) == null) {
+    public void addUniversity(University university) throws DuplicateUniversityException {
+        if (findUniversity(university.getName()).equals(null)) {
             AllUniversities.add(university);
         } // 若找到大学，需添加exception(duplicate)
+        else {
+            throw new DuplicateUniversityException("University already exists: " + university.getName());
+        }
     }
 
     public University findUniversity(String name) {
         for (int i = 0; i < AllUniversities.size(); i++) {
-            if (AllUniversities.get(i).getName() == name) {
+            if (AllUniversities.get(i).getName().equals(name)) {
                 return AllUniversities.get(i);
             }
         }
@@ -40,7 +44,7 @@ public class DatabaseForUniversity extends Database {
         // 从CSV文件中读取大学信息, 并写入AllUniversities
         try (BufferedReader br = new BufferedReader(new FileReader("./file/universities.csv"))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            while (!(line = br.readLine()).equals(null)) {
                 String[] values = line.split(",");
                 AllUniversities.add(new University(values[0], values[1]));
                 AllUniversities.add(new University(values[0], values[1]));

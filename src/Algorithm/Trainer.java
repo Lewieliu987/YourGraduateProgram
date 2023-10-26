@@ -36,7 +36,7 @@ public class Trainer extends NaiveBayes {
         String line = "";
         ArrayList<String> records = new ArrayList<>();
         try {
-            while ((line = br.readLine()) != null) {
+            while (!(line = br.readLine()).equals(null)) {
                 records.add(line);
             }
 

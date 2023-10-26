@@ -38,22 +38,22 @@ public class Student extends User {
     public void setMyPreferRegion(int regionCode) {
         switch (regionCode) {
             case 1:
-                this.preferRegion = "USA";
+                this.preferRegion.equals("USA");
                 break;
             case 2:
-                this.preferRegion = "UK";
+                this.preferRegion.equals("UK");
                 break;
             case 3:
-                this.preferRegion = "Europe";
+                this.preferRegion.equals("Europe");
                 break;
             case 4:
-                this.preferRegion = "Japan";
+                this.preferRegion.equals("Japan");
                 break;
             case 5:
-                this.preferRegion = "Hong Kong & Singapore";
+                this.preferRegion.equals("Hong Kong & Singapore");
                 break;
             case 6:
-                this.preferRegion = "China Mainland";
+                this.preferRegion.equals("China Mainland");
                 break;
         }
         ;

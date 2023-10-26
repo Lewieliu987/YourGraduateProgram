@@ -1,6 +1,10 @@
 package Database;
 
 import java.util.ArrayList;
+
+import Exceptions.DuplicateUserException;
+import Exceptions.UserNotFoundException;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -23,10 +27,13 @@ public class DatabaseForUser extends Database {
         return instance;
     }
 
-    public void addUser(User user) {
+    public void addUser(User user) throws DuplicateUserException {
         if (findUser(user.getId()) == null) {
             AllUsers.add(user);
         } // 若找到用户，需添加exception(duplicate)
+        else {
+            throw new DuplicateUserException("User with id " + user.getId() + " already exists.");
+        }
     }
 
     public User findUser(int id) {
@@ -38,17 +45,20 @@ public class DatabaseForUser extends Database {
         return null;
     }
 
-    public void deleteUser(int idToDelete) {
+    public void deleteUser(int idToDelete) throws UserNotFoundException {
         if (findUser(idToDelete) != null) {
             AllUsers.remove(findUser(idToDelete));
         } // 若没找到用户，需添加exception
+        else {
+            throw new UserNotFoundException("User with id " + idToDelete + " not found.");
+        }
     }
 
     public void readUsersFromCSV() {
         // 从CSV文件中读取用户信息, 并写入AllUsers
         try (BufferedReader br = new BufferedReader(new FileReader("./file/users.csv"))) {
             String line;
-            while ((line = br.readLine()) != null) {
+            while (!(line = br.readLine()).equals(null)) {
                 String[] values = line.split(",");
                 if (values[2].equals("true")) {
                     AllUsers.add(new Admin(values[1], values[2]));
@@ -65,7 +75,8 @@ public class DatabaseForUser extends Database {
         // 将用户信息写入CSV文件（覆盖）
         try (PrintWriter writer = new PrintWriter(new FileWriter("./file/users.csv", false))) {
             for (User user : AllUsers) {
-                writer.println(user.getId()+ ","+ user.getUsername() + "," + user.getPassword() + "," + user.getRole());
+                writer.println(
+                        user.getId() + "," + user.getUsername() + "," + user.getPassword() + "," + user.getRole());
             }
         } catch (IOException e) {
             e.printStackTrace();
