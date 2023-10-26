@@ -1,4 +1,5 @@
 package User;
+
 import java.util.Scanner;
 
 public class UserInputAdmin implements UserInput {

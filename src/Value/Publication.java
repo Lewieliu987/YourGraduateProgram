@@ -1,12 +1,14 @@
 package Value;
+
 import java.util.ArrayList;
 
-public class Publication{
+public class Publication {
     private ArrayList<EveryPublication> publications;
-    public Publication(ArrayList<EveryPublication> publications)
-    {
+
+    public Publication(ArrayList<EveryPublication> publications) {
         this.publications = publications;
     }
+
     public void addPublication(EveryPublication publication) {
         publications.add(publication);
     }

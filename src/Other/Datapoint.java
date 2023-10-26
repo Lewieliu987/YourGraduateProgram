@@ -1,5 +1,6 @@
 // each object represents one single row of datapoints database
 package Other;
+
 public class Datapoint {
     private int tier_admission_university;
     private int tier_background_university;
@@ -17,10 +18,10 @@ public class Datapoint {
     private int num_paper;
 
     private WeightedGPA wgpa;
-    
+
     private WeightedOthers wothers;
 
-    public Datapoint(int tier1, int tier2, double gpa1, double gpa2, int num1, int num2, int num3){
+    public Datapoint(int tier1, int tier2, double gpa1, double gpa2, int num1, int num2, int num3) {
         tier_admission_university = tier1;
         tier_background_university = tier2;
         CGPA = gpa1;
@@ -33,39 +34,39 @@ public class Datapoint {
 
     }
 
-    public int getTierAdmission(){
+    public int getTierAdmission() {
         return tier_admission_university;
     }
 
-    public int getTierBackground(){
+    public int getTierBackground() {
         return tier_background_university;
     }
 
-    public double getCGPA(){
+    public double getCGPA() {
         return CGPA;
     }
 
-    public double getMGPA(){
+    public double getMGPA() {
         return MGPA;
     }
 
-    public int getNumLor(){
+    public int getNumLor() {
         return num_LoR;
     }
 
-    public int getNumIntern(){
+    public int getNumIntern() {
         return num_intern;
     }
 
-    public int getNumPaper(){
+    public int getNumPaper() {
         return num_paper;
     }
 
-    public double getweightedG(){
+    public double getweightedG() {
         return wgpa.getWeighted();
     }
 
-    public double getweighedO(){
+    public double getweighedO() {
         return wothers.getWeighted();
     }
 }

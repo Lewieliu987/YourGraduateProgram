@@ -1,4 +1,5 @@
 package User;
+
 import Value.EveryInternship;
 import Value.EveryPublication;
 import Value.EveryRecommendation;
@@ -35,11 +36,11 @@ public class Student extends User {
 
     // Setter method for perferRegion
     public void setMyPreferRegion(int regionCode) {
-        switch(regionCode){
+        switch (regionCode) {
             case 1:
                 this.preferRegion = "USA";
                 break;
-            case 2: 
+            case 2:
                 this.preferRegion = "UK";
                 break;
             case 3:
@@ -54,7 +55,8 @@ public class Student extends User {
             case 6:
                 this.preferRegion = "China Mainland";
                 break;
-        };
+        }
+        ;
     }
 
     // Setter method for preferTuitionFee
@@ -90,7 +92,7 @@ public class Student extends User {
     }
 
     public void setMyApplicationType(String applicationType) {
-        switch(applicationType){
+        switch (applicationType) {
             case "Master":
                 this.applicationType = 1;
                 break;
@@ -103,6 +105,5 @@ public class Student extends User {
     public void getMyAdmission() {
         // 等王子轩
     }
-
 
 }

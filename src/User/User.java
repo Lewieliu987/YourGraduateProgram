@@ -1,4 +1,5 @@
 package User;
+
 import System.IdSystem;
 import Database.DatabaseForUser;
 
@@ -51,7 +52,7 @@ public abstract class User {
         this.name = newName;
     }
 
-    public boolean getPermission(){
+    public boolean getPermission() {
         return isAdmin;
     }
 

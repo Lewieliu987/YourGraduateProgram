@@ -1,4 +1,5 @@
 package Algorithm;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -8,12 +9,12 @@ import java.util.ArrayList;
 import Other.Datapoint;
 import Other.DatapointsAtier;
 
-public class Trainer extends NaiveBayes{
+public class Trainer extends NaiveBayes {
 
     private ArrayList<Datapoint> database;
     private ArrayList<DatapointsAtier> fiveDataTiers;
 
-    public Trainer(){
+    public Trainer() {
         // load parameters storded in database
         super();
 
@@ -38,37 +39,37 @@ public class Trainer extends NaiveBayes{
             while ((line = br.readLine()) != null) {
                 records.add(line);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        for(int i =1;i<records.size();i++){
+        for (int i = 1; i < records.size(); i++) {
             int[] ints = new int[5];
             Double[] d = new Double[2];
 
-            for (int x=1;x<=2;x++){
-                ints[x-1] = Integer.parseInt(records.get(i).split(",")[x]);       
+            for (int x = 1; x <= 2; x++) {
+                ints[x - 1] = Integer.parseInt(records.get(i).split(",")[x]);
             }
-            for (int x=3;x<=4;x++){
-                d[x-3] = Double.valueOf(records.get(i).split(",")[x]);       
+            for (int x = 3; x <= 4; x++) {
+                d[x - 3] = Double.valueOf(records.get(i).split(",")[x]);
             }
-            for (int x=5;x<=7;x++){
-                ints[x-3] = Integer.parseInt(records.get(i).split(",")[x]);       
+            for (int x = 5; x <= 7; x++) {
+                ints[x - 3] = Integer.parseInt(records.get(i).split(",")[x]);
             }
             database.add(new Datapoint(ints[0], ints[1], d[0], d[1], ints[2], ints[3], ints[4]));
         }
 
         // reorganize datapoints to 5 tiers
-        for(int x=1;x<=5;x++){
+        for (int x = 1; x <= 5; x++) {
             fiveDataTiers.add(new DatapointsAtier(x, database));
         }
 
     }
 
-    //train ps bases on the current database
-    public void trainParameters(){
-        for(int x =0;x<5;x++){
+    // train ps bases on the current database
+    public void trainParameters() {
+        for (int x = 0; x < 5; x++) {
             // update conditional prob
             this.getps().get(x).setP1(fiveDataTiers.get(x).computeP1());
             this.getps().get(x).setP2(fiveDataTiers.get(x).computeP2());
@@ -86,9 +87,9 @@ public class Trainer extends NaiveBayes{
         }
     }
 
-    //update ps to parameters database
-    public void updateParameters(){
-        
+    // update ps to parameters database
+    public void updateParameters() {
+
     }
 
 }

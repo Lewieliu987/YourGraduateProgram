@@ -1,4 +1,5 @@
 package User;
+
 import java.util.Scanner;
 
 import Value.Gpa;
@@ -18,7 +19,7 @@ public class UserInputStudent implements UserInput {
         student.setMyApplicationType(applicationType);
 
         // 本科专业（String）
-        System.out.println(); 
+        System.out.println();
         System.out.println("Please select your home major code:");
         System.out.println("1. Computer Science (CS)");
         System.out.println("2. Electrical Engineering (EE)");
@@ -59,12 +60,12 @@ public class UserInputStudent implements UserInput {
         System.out.println("How many rounds of internship did you have? Please enter your answer(maximun 5 rounds):");
         int rounds = scanner.nextInt();
         // 每一段实习经历
-        for(int i=0;i<rounds;i++){
+        for (int i = 0; i < rounds; i++) {
             System.out.println("Please enter next company_level (from 1 to 5, the higher the better):");
             int companyLevel = scanner.nextInt();
             System.out.println("Please enter the duration:");
             double duration = scanner.nextDouble();
-            student.setMyInternship(companyLevel, duration); 
+            student.setMyInternship(companyLevel, duration);
             System.out.println("Internship information stored successfully!");
         }
 
@@ -73,10 +74,12 @@ public class UserInputStudent implements UserInput {
         System.out.println("How many recommendation letters did you get in total? Please enter your answer:");
         int number = scanner.nextInt();
         // 每一封推荐信
-        for(int i=0;i<number;i++){
-            System.out.println("Please enter the professor's level for your next recommendation letter (1 for Assistant Professor, 2 for Associate Professor, 3 for Professor, 4 for Chair Professor):");
+        for (int i = 0; i < number; i++) {
+            System.out.println(
+                    "Please enter the professor's level for your next recommendation letter (1 for Assistant Professor, 2 for Associate Professor, 3 for Professor, 4 for Chair Professor):");
             int prof_level = scanner.nextInt();
-            System.out.println("How do you feel the quanlity of this letter, please enter the rank (from 1-5, the larger the better):");
+            System.out.println(
+                    "How do you feel the quanlity of this letter, please enter the rank (from 1-5, the larger the better):");
             int quality = scanner.nextInt();
             student.setMyRecommendation(prof_level, quality);
             System.out.println("Recommendation letter information stored successfully!");
@@ -87,7 +90,7 @@ public class UserInputStudent implements UserInput {
         System.out.println("How many publications do you have? Please enter your answer:");
         int num = scanner.nextInt();
         // 每一篇发表
-        for(int i=0;i<num;i++){
+        for (int i = 0; i < num; i++) {
             System.out.println("Please enter the level for your publication");
             int level = scanner.nextInt();
             student.setMyPublication(level);

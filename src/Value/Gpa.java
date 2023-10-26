@@ -1,10 +1,10 @@
 package Value;
-public class Gpa{
+
+public class Gpa {
     private double cgpa;
     private double major_gpa;
-    
-    public Gpa(double cgpa, double major_gpa)
-    {
+
+    public Gpa(double cgpa, double major_gpa) {
 
         this.cgpa = cgpa;
         this.major_gpa = major_gpa;

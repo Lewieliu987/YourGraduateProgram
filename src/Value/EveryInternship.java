@@ -1,6 +1,6 @@
 package Value;
-public class EveryInternship
-{
+
+public class EveryInternship {
     // 每一段实习
     private int company_level;
     private double time_interval;
@@ -18,8 +18,3 @@ public class EveryInternship
         return time_interval;
     }
 }
-
-
-
-
-
