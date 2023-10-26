@@ -9,7 +9,6 @@ public class University {
     private String region;
     private ArrayList<Program> programList;
     // University 应维护变量numberOfProgram
-    private int numberOfProgram;
 
     public University(String name, String region) {// university不需id
         this.name = name;
@@ -29,7 +28,6 @@ public class University {
         String pId = pIdBuilder.toString();
         Program newProgram = new Program(pId, pName, pType, pRate);
         programList.add(newProgram);
-        numberOfProgram++;
     }
 
     public Program findProgram(String pId) {
@@ -46,6 +44,8 @@ public class University {
     }
 
     public void showAllProgram() {
-        // 显示所有项目的名称和代码
+        for (int i = 0; i < programList.size(); i++) {
+            System.out.println(programList.get(i).getName());
+        }
     }
 }

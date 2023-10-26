@@ -4,7 +4,7 @@ import Algorithm.Trainer;
 
 public class Admin extends User {
     public Admin(String name, String password) {
-        super(name, password, true);
+        super(name, password, "true");
     }
 
     // 添加Admin的其他方法

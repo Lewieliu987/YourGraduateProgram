@@ -26,7 +26,7 @@ public class Student extends User {
     private Publication my_Publication;
 
     public Student(String name, String password) {
-        super(name, password, false);
+        super(name, password, "false");
     }
 
     // Setter method for my_Major
@@ -95,10 +95,8 @@ public class Student extends User {
         switch (applicationType) {
             case "Master":
                 this.applicationType = 1;
-                break;
             case "PhD":
                 this.applicationType = 2;
-                break;
         }
     }
 

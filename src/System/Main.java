@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Algorithm.Trainer;
 import Database.DatabaseForUser;
+import Database.DatabaseForUniversity;
 import User.Admin;
 import User.Student;
 import User.User;
@@ -180,6 +181,7 @@ public class Main {
 
                                 case "3":
                                     // 1. 增加大学 2. 修改大学信息 3. 查找大学 4. 退出
+                                    DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
                                     while (true) {
                                         System.out.println("Please enter the operatifon code: " + '\n'
                                                 + "1. Add university" + '\n' + "2. Modify university information" + '\n'
@@ -192,13 +194,13 @@ public class Main {
                                                 while (true) {
                                                     System.out.println("Please enter the university's name:");
                                                     String nameToModify = scanner.next();
-                                                    University universityToModify = dfu.findUniversity(nameToModify);
+                                                    University universityToModify = dfuu.findUniversity(nameToModify);
                                                     if (universityToModify == null){
                                                         System.out.println();
                                                     }
                                                 }
-                                    }
-
+                                            }
+                                        }
                                 case "4":
                                 case "5":
                                     System.out.println("System exited successfully!");

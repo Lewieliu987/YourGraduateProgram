@@ -10,13 +10,14 @@ public abstract class User {
     private boolean isAdmin;
 
     // Constructor for registration
-    public User(String name, String password, boolean isAdmin) {
+    public User(String name, String password, String isAdmin) {
         IdSystem ids = IdSystem.getInstance();
         DatabaseForUser dfu = DatabaseForUser.getInstance();
-        this.id = ids.generateUserId(isAdmin);
+        this.id = ids.generateUserId(isAdmin.equals("true"));
         this.name = name;
         this.password = password;
-        this.isAdmin = isAdmin;
+        this.isAdmin = isAdmin.equals("true");
+        
         dfu.addUser(this);
     }
 
