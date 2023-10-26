@@ -44,16 +44,16 @@ public class DatabaseForUser extends Database {
         } // 若没找到用户，需添加exception
     }
 
-    public void readUsersFromCSV(String filename) {
+    public void readUsersFromCSV() {
         // 从CSV文件中读取用户信息, 并写入AllUsers
-        try (BufferedReader br = new BufferedReader(new FileReader("../../file/users.csv"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("./file/users.csv"))) {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values[2].equals("true")) {
-                    AllUsers.add(new Admin(values[0], values[1]));
+                    AllUsers.add(new Admin(values[1], values[2]));
                 } else {
-                    AllUsers.add(new Student(values[0], values[1]));
+                    AllUsers.add(new Student(values[1], values[2]));
                 }
             }
         } catch (IOException e) {
@@ -61,11 +61,11 @@ public class DatabaseForUser extends Database {
         }
     }
 
-    public void writeUsersToCSV(String filename) {
+    public void writeUsersToCSV() {
         // 将用户信息写入CSV文件（覆盖）
-        try (PrintWriter writer = new PrintWriter(new FileWriter("../../file/users.csv", false))) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter("./file/users.csv", false))) {
             for (User user : AllUsers) {
-                writer.println(user.getUsername() + "," + user.getPassword() + "," + user.getRole());
+                writer.println(user.getId()+ ","+ user.getUsername() + "," + user.getPassword() + "," + user.getRole());
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -36,7 +36,7 @@ public class Parameter {
         AdmissionTier = tier;
 
         // load the database which contains the parameters
-        File csv = new File("./database/parameters.csv");
+        File csv = new File("./file/parameters.csv");
         csv.setReadable(true);
         csv.setWritable(true);
         InputStreamReader isr = null;

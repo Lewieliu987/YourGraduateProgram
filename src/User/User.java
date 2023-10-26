@@ -1,7 +1,6 @@
 package User;
 
 import System.IdSystem;
-import Database.DatabaseForUser;
 
 public abstract class User {
     private int id;
@@ -12,13 +11,19 @@ public abstract class User {
     // Constructor for registration
     public User(String name, String password, String isAdmin) {
         IdSystem ids = IdSystem.getInstance();
-        DatabaseForUser dfu = DatabaseForUser.getInstance();
         this.id = ids.generateUserId(isAdmin.equals("true"));
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin.equals("true");
-        
-        dfu.addUser(this);
+
+    }
+
+    public User(int id, String name, String password, String isAdmin) {
+        // 如果提供了ID
+        this.id = id;
+        this.name = name;
+        this.password = password;
+        this.isAdmin = isAdmin.equals("true");
     }
 
     public void setName(String name) {

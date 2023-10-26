@@ -22,7 +22,7 @@ public class Trainer extends NaiveBayes {
         fiveDataTiers = new ArrayList<>();
 
         // load database for training
-        File csv = new File("./database/datapoints.csv");
+        File csv = new File("./file/datapoints.csv");
         csv.setReadable(true);
         csv.setWritable(true);
         InputStreamReader isr = null;

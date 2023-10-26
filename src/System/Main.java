@@ -16,23 +16,26 @@ public class Main {
         Trainer t = new Trainer();
         t.trainParameters();
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Welcome to CityU YGP System, log in or register?");
-        String answer = scanner.next();// 选择登录还是注册
+        System.out.println("Welcome to CityU YGP System, Log in or Register?");
+        String answer = scanner.nextLine();// 选择登录还是注册
 
         User user;
         DatabaseForUser dfu = DatabaseForUser.getInstance();
+        dfu.readUsersFromCSV();
 
-        if (answer == "log in") {// search user in DatabaseForUser using id & password
-            System.out.println("Please enter your id and password to log in:");
+        if (answer.equals("Log in")) {// search user in DatabaseForUser using id & password
+            System.out.println("Please enter your id:");
             int id = scanner.nextInt();
 
             // 找到id对应的user
             user = dfu.findUser(id);
+            System.out.println("Id found! Please enter your password to log in: ");
             // 要写exception， 如果找不到id
 
             testPasswordLoop: while (true) {
                 String password = scanner.next();
                 if (password.equals(user.getPassword())) {
+                    System.out.println(user.getPassword());
                     if (!user.getPermission()) {
                         // 对于该user，用while循环，执行指令直到exit
                         // studentServiceLoop:
@@ -47,10 +50,14 @@ public class Main {
                             switch (choice) {
                                 case "1":
                                     System.out.println("Please enter your new name and password");
-                                    user.setName(scanner.next());
-                                    user.setPassword(scanner.next());
-                                    System.out.println("Your information has been updated successfully!");
-                                    System.out.println("Press c to continue");
+                                    scanner.nextLine(); 
+                                    System.out.print("New name: ");
+                                    user.resetName(scanner.nextLine());
+                                    System.out.print("New password: ");
+                                    user.resetPassword(scanner.nextLine());
+                                    dfu.writeUsersToCSV();
+                                    System.out.println(
+                                            "Your information has been updated successfully! Press c to use other services");
                                     char continueOrNot = scanner.next().charAt(0);
                                     if (continueOrNot == 'c') {
                                         continue;
@@ -83,10 +90,18 @@ public class Main {
                             switch (choice) {
                                 case "1":
                                     System.out.println("Please enter your new name and password");
-                                    user.setName(scanner.next());
-                                    user.setPassword(scanner.next());
-                                    System.out.println("Your information has been updated successfully!");
-                                    System.out.println();
+                                    System.out.println("New name:");
+                                    user.resetName(scanner.nextLine());
+                                    System.out.println("New password:");
+                                    user.resetPassword(scanner.nextLine());
+                                    System.out.println(
+                                            "Your information has been updated successfully! Press c to use other services");
+                                    char continueOrNot = scanner.next().charAt(0);
+                                    if (continueOrNot == 'c') {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
                                 case "2":
                                     databaseForUserLoop: while (true) {
                                         // 1. 增加用户 2. 删除用户 3. 修改用户 4. 查找用户 5. 退出
@@ -122,8 +137,8 @@ public class Main {
                                                     dfu.deleteUser(idToDelete); // Exception
                                                     System.out.println("User deleted successfully!");
                                                     System.out.println("Press c to continue");
-                                                    char continueOrNot = scanner.next().charAt(0);
-                                                    if (continueOrNot == 'c') {
+                                                    char continueorNot = scanner.next().charAt(0);
+                                                    if (continueorNot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
@@ -144,8 +159,8 @@ public class Main {
                                                     userToModify.setPassword(scanner.next());
                                                     System.out.println("User modified successfully!");
                                                     System.out.println("Press c to continue");
-                                                    char continueOrNot = scanner.next().charAt(0);
-                                                    if (continueOrNot == 'c') {
+                                                    char continueorNot = scanner.next().charAt(0);
+                                                    if (continueorNot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
@@ -166,8 +181,8 @@ public class Main {
                                                             + "User's password: " + userToSearch.getPassword()
                                                             + "User's role: " + userToSearch.getRole());
                                                     System.out.println("Press c to continue");
-                                                    char continueOrNot = scanner.next().charAt(0);
-                                                    if (continueOrNot == 'c') {
+                                                    char continueorNot = scanner.next().charAt(0);
+                                                    if (continueorNot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
@@ -212,20 +227,20 @@ public class Main {
                 }
             }
 
-        } else if (answer == "Register") {// input name, password, generate user;
+        } else if (answer.equals("Register")) {// input name, password, generate user;
             System.out.println("Please enter your name");
-            String name = scanner.next();
+            String name = scanner.nextLine();
             System.out.println("Please set your password");
             String password = scanner.next();
             while (true) {
                 System.out.println("Please enter your role");
                 String role = scanner.next();
                 // 用IdSystem生成id，然后存入DatabaseForUser数据库
-                if (role == "admin") {
+                if (role.equals("Admin")) {
                     user = new Admin(name, password);
                     dfu.addUser(user);
                     break;
-                } else if (role == "student") {
+                } else if (role.equals("Student")) {
                     user = new Student(name, password);
                     dfu.addUser(user);
                     break;
@@ -234,9 +249,11 @@ public class Main {
                     continue;
                 }
             }
-            System.out.println("Register successfully, please restart the system!");
+            dfu.writeUsersToCSV();
+            System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
+        } else {
+            System.out.println("Wrong input, please try again!");
         }
-
         scanner.close();
     }
 }
