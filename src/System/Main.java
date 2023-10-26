@@ -174,11 +174,10 @@ public class Main {
                                                     }
                                                 }
                                             case "5":
-                                                System.out.println("System exited successfully!");
+                                                System.out.println("User Modify System exited successfully!");
                                                 break databaseForUserLoop;
                                         }
                                     }
-
                                 case "3":
                                     // 1. 增加大学 2. 修改大学信息 3. 查找大学 4. 退出
                                     DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
@@ -187,20 +186,20 @@ public class Main {
                                                 + "1. Add university" + '\n' + "2. Modify university information" + '\n'
                                                 + "3. Search university" + '\n' + "4. Exit");
                                         String operationCode = scanner.next();
-                                        switch(operationCode){
+                                        switch (operationCode) {
                                             case "1":
-                                               
+
                                             case "2":
                                                 while (true) {
                                                     System.out.println("Please enter the university's name:");
                                                     String nameToModify = scanner.next();
                                                     University universityToModify = dfuu.findUniversity(nameToModify);
-                                                    if (universityToModify == null){
+                                                    if (universityToModify == null) {
                                                         System.out.println();
                                                     }
                                                 }
-                                            }
                                         }
+                                    }
                                 case "4":
                                 case "5":
                                     System.out.println("System exited successfully!");
@@ -214,17 +213,26 @@ public class Main {
             }
 
         } else if (answer == "Register") {// input name, password, generate user;
-            System.out.println("Please enter your role");
-            String role = scanner.next();
             System.out.println("Please enter your name");
             String name = scanner.next();
             System.out.println("Please set your password");
             String password = scanner.next();
-            // 用IdSystem生成id，然后存入DatabaseForUser数据库
-            if (role == "admin") {
-                user = new Admin(name, password);
-            } else if (role == "student") {
-                user = new Student(name, password);
+            while (true) {
+                System.out.println("Please enter your role");
+                String role = scanner.next();
+                // 用IdSystem生成id，然后存入DatabaseForUser数据库
+                if (role == "admin") {
+                    user = new Admin(name, password);
+                    dfu.addUser(user);
+                    break;
+                } else if (role == "student") {
+                    user = new Student(name, password);
+                    dfu.addUser(user);
+                    break;
+                } else {
+                    System.out.println("Wrong role, please try again!");
+                    continue;
+                }
             }
             System.out.println("Register successfully, please restart the system!");
         }

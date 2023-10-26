@@ -6,6 +6,7 @@ Please use SSH to clone the project
 Please add your code to your local repo before commit  
 Remember to pull(update) the project before any updates
 Please enter "git remote update origin --prune" in terminal if you cannot find branches  
+Please enter "find . -name '*.java' | xargs wc -l" to check the number of java lines
 #### Add & Update
 When you add or update a file, please commit as
 Update/Add filename_developername
