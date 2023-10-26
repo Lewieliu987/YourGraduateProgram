@@ -7,7 +7,11 @@ public class Major {
         this.name = name;
     }
 
-    public String getMajor() {
+    public String getMajorName() {
         return name;
+    }
+
+    public void setMajorName(String name) {
+        this.name = name;
     }
 }

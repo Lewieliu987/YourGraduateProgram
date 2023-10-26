@@ -6,14 +6,13 @@ public class University {
     private String name;
     private String region;
     private ArrayList<Program> programList;
-    // University 应维护变量numberOfProgram
 
     public University(String name, String region) {// university不需id
         this.name = name;
         this.region = region;
     }
 
-    public void addProgram(String pName, String pType, double pRate) {
+    public void addProgram(String pName, String pType, double pRate, String pMajorName) {
         // 名称，类型，录取率需从外部读入
         // pId由项目的每个大写字母构成
         StringBuilder pIdBuilder = new StringBuilder();
@@ -24,7 +23,7 @@ public class University {
             }
         }
         String pId = pIdBuilder.toString();
-        Program newProgram = new Program(pId, pName, pType, pRate);
+        Program newProgram = new Program(pId, pName, pType, pRate, pMajorName);
         programList.add(newProgram);
     }
 
@@ -41,9 +40,16 @@ public class University {
         return name;
     }
 
+    public String getRegion() {
+        return region;
+    }
+
     public void showAllProgram() {
         for (int i = 0; i < programList.size(); i++) {
-            System.out.println(programList.get(i).getName());
+            Program program = programList.get(i);
+            System.out.println(program.getId() + ", " + program.getName() + ", Degree Type: " + program.getDegreeType()
+                    + ", Acceptance Rate: " + program.getAcceptanceRate() + ", Only for Major: "
+                    + program.getMajorName());
         }
     }
 }
