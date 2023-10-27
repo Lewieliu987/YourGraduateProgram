@@ -58,7 +58,7 @@ public class DatabaseForUser extends Database {
         // 从CSV文件中读取用户信息, 并写入AllUsers
         try (BufferedReader br = new BufferedReader(new FileReader("./file/users.csv"))) {
             String line;
-            while (!(line = br.readLine()).equals(null)) {
+            while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 if (values[2].equals("true")) {
                     AllUsers.add(new Admin(values[1], values[2]));

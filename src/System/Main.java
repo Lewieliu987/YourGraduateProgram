@@ -20,13 +20,12 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to CityU YGP System, Log in or Register?");
         // 选择登录还是注册
-
         User user;
         DatabaseForUser dfu = DatabaseForUser.getInstance();
         dfu.readUsersFromCSV();
-
+        String answer = scanner.nextLine();
         while (true) {
-            String answer = scanner.nextLine();
+
             if (answer.equals("Log in")) {// search user in DatabaseForUser using id & password
                 System.out.println("Please enter your id:");
                 int id = scanner.nextInt();
@@ -41,7 +40,7 @@ public class Main {
                     if (password.equals(user.getPassword())) {
                         System.out.println(user.getPassword());
                         if (!user.getPermission()) {
-                            // 对于该user，用while循环，执行指令直到exit
+                            // for user，use while loop，until exit
                             // studentServiceLoop:
                             while (true) {
                                 // 1. 更改基本信息 2. 更改申请信息 3. 查看录取概率 4. 退出
