@@ -67,17 +67,11 @@ public class Trainer extends NaiveBayes {
 
     }
 
-<<<<<<< HEAD
-    // train ps bases on the current database
-    public void trainParameters() {
-        for (int x = 0; x < 5; x++) {
-=======
     //train ps bases on the current database
     public void trainParameters(){
         System.out.println("Retrained conditional probability:");
         
         for(int x =0;x<5;x++){
->>>>>>> origin/zixuanw
             // update conditional prob
             this.getps().get(x).setP1(fiveDataTiers.get(x).computeP1());
             this.getps().get(x).setP2(fiveDataTiers.get(x).computeP2());
@@ -107,14 +101,7 @@ public class Trainer extends NaiveBayes {
         System.out.println("Finish retraining the parameter based on the current database.");
     }
 
-<<<<<<< HEAD
-    // update ps to parameters database
-    public void updateParameters() {
-=======
     //update ps to parameters database
-    public void updateParameters(){
->>>>>>> origin/zixuanw
-
-    }
-
+    public void updateParameters(){}
+    
 }
