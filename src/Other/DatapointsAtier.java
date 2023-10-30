@@ -2,11 +2,11 @@ package Other;
 
 import java.util.ArrayList;
 
-public class datapointsAtier {
+public class DatapointsAtier {
     private int tier;
     private ArrayList<Datapoint> datapoints;
 
-    public datapointsAtier(int i, ArrayList<Datapoint> database) {
+    public DatapointsAtier(int i, ArrayList<Datapoint> database) {
         datapoints = new ArrayList<>();
         tier = i;
         for (Datapoint d : database) {
