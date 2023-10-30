@@ -5,11 +5,13 @@ import java.util.ArrayList;
 public class University {
     private String name;
     private String region;
+    private String tier;
     private ArrayList<Program> programList;
 
-    public University(String name, String region) {// university不需id
+    public University(String name, String region, String tier) {// university不需id
         this.name = name;
         this.region = region;
+        this.tier = tier;
     }
 
     public void addProgram(String pName, String pType, double pRate, String pMajorName) {
@@ -42,6 +44,10 @@ public class University {
 
     public String getRegion() {
         return region;
+    }
+
+    public String getTier() {
+        return tier;
     }
 
     public void showAllProgram() {

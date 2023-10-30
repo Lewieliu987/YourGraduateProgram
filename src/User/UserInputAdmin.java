@@ -16,8 +16,7 @@ public class UserInputAdmin implements UserInput {
         String passwords = scanner.next();
         user.setPassword(passwords);
 
-        // 用IdSystem生成id，然后存入DatabaseForUser数据库
-
+        // generate ID using Id System and stored in into DatabaseForUser
         scanner.close();
     }
 }

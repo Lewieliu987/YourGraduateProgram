@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import Algorithm.Trainer;
 import Database.DatabaseForUser;
+import Exceptions.DuplicateUniversityException;
 import Exceptions.DuplicateUserException;
 import Exceptions.UserNotFoundException;
 import Database.DatabaseForUniversity;
@@ -20,7 +21,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to CityU YGP System, Log in or Register?");
         // 选择登录还是注册
-        User user;
+        User user = null;
         DatabaseForUser dfu = DatabaseForUser.getInstance();
         dfu.readUsersFromCSV();
         String answer = scanner.nextLine();
@@ -31,8 +32,18 @@ public class Main {
                 int id = scanner.nextInt();
 
                 // 找到id对应的user
-                user = dfu.findUser(id);
-                System.out.println("Id found! Please enter your password to log in: ");
+                try {
+                    user = dfu.findUser(id);
+                    if (user == null) {
+                        throw new UserNotFoundException("User with id " + id + " not found.");
+                    }
+                    System.out.println("Id found! Please enter your password to log in: ");
+                    // Continue with password handling...
+
+                } catch (UserNotFoundException e) {
+                    System.out.println("User not found! Please check your input and try again.");
+                    continue;
+                }
                 // 要写exception， 如果找不到id
 
                 testPasswordLoop: while (true) {
@@ -110,10 +121,10 @@ public class Main {
                                         }
                                     case "2":
                                         databaseForUserLoop: while (true) {
-                                            // 1. 增加用户 2. 删除用户 3. 修改用户 4. 查找用户 5. 退出
+                                            // 1. add new user 2. delete user 3. search user 5. exit
                                             System.out.println("Please enter the operation code: " + '\n'
-                                                    + "1. Add user" + '\n' + "2. Delete user" + '\n'
-                                                    + "3. Modify user" + '\n' + "4. Search user" + '\n' + "5. Exit");
+                                                    + "1. Add user" + '\n' + "2. Delete user" + '\n' + "3. Search user"
+                                                    + '\n' + "4. Exit");
                                             String operationCode = scanner.next();
                                             switch (operationCode) {
                                                 case "1":
@@ -157,31 +168,9 @@ public class Main {
                                                         } else {
                                                             break;
                                                         }
-                                                    } // 有一个问题，user deleted之后，id还是存在
+                                                    } // there is a problem that after user being deleted，the id still
+                                                      // exists
                                                 case "3":
-                                                    while (true) {
-                                                        System.out.println("Please enter the user's id:");
-                                                        int idToModify = scanner.nextInt();
-                                                        User userToModify = dfu.findUser(idToModify);
-                                                        if (userToModify == null) {
-                                                            System.out.println("User not found!");
-                                                            break;
-                                                        }
-                                                        System.out
-                                                                .println(
-                                                                        "Please enter the user's new name and password:");
-                                                        userToModify.setName(scanner.next());
-                                                        userToModify.setPassword(scanner.next());
-                                                        System.out.println("User modified successfully!");
-                                                        System.out.println("Press c to continue");
-                                                        char continueorNot = scanner.next().charAt(0);
-                                                        if (continueorNot == 'c') {
-                                                            continue;
-                                                        } else {
-                                                            break;
-                                                        }
-                                                    }
-                                                case "4":
                                                     while (true) {
                                                         System.out.println("Please enter the user's id:");
                                                         int idToSearch = scanner.nextInt();
@@ -203,39 +192,44 @@ public class Main {
                                                             break;
                                                         }
                                                     }
-                                                case "5":
+                                                case "4":
                                                     System.out.println("User Modify System exited successfully!");
                                                     break databaseForUserLoop;
                                             }
                                         }
                                     case "3":
-                                        // 1. 增加大学 2. 修改大学信息 3. 查找大学 4. 退出
                                         DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
                                         while (true) {
                                             System.out.println("Please enter the operatifon code: " + '\n'
-                                                    + "1. Add university" + '\n' + "2. Modify university information"
-                                                    + '\n'
-                                                    + "3. Search university" + '\n' + "4. Exit");
+                                                    + "1. Add a new university to the system" + '\n'
+                                                    + "2. Search university" + '\n' + "3. Exit");
                                             String operationCode = scanner.next();
                                             switch (operationCode) {
                                                 case "1":
-
-                                                case "2":
-                                                    while (true) {
-                                                        System.out.println("Please enter the university's name:");
-                                                        String nameToModify = scanner.nextLine();
-                                                        University universityToModify = dfuu
-                                                                .findUniversity(nameToModify);
-                                                        if (universityToModify == null) {
-                                                            System.out.println();
-                                                        }
+                                                    System.out.println("Please enter the name for the University");
+                                                    String name = scanner.nextLine();
+                                                    System.out.println("Please enter the region of the University");
+                                                    String region = scanner.nextLine();
+                                                    System.out.println(
+                                                            "Please enter the tier of the university(1 for 1st to 10th, 2 for 11th to 30th, 3 for 31th to 50th, 4 for 50th to 70th, 5 for 71th to 100th )");
+                                                    String tier = scanner.next();
+                                                    University university = new University(name, region, tier);
+                                                    try {
+                                                        dfuu.addUniversity(university);
+                                                        dfuu.writeUniversitiesToCSV();
+                                                    } catch (DuplicateUniversityException e) {
+                                                        System.out.println(e.getMessage());
                                                     }
+                                                case "2":
+                                                    System.out.println("Please enter the name for the University");
+                                                    String univ_name = scanner.nextLine();
+                                                    dfuu.findUniversity(univ_name);
+                                                case "3":
+                                                    System.out.println("System exited successfully!");
+                                                    break testPasswordLoop;
                                             }
                                         }
-                                    case "4":
-                                    case "5":
-                                        System.out.println("System exited successfully!");
-                                        break testPasswordLoop;
+
                                 }
                             }
                         }

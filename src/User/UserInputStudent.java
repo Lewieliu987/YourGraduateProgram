@@ -13,12 +13,12 @@ public class UserInputStudent implements UserInput {
         Student student = (Student) user;
         Scanner scanner = new Scanner(System.in);
 
-        // 申请项目类型（Master/Phd）
+        // degree applying （Master/Phd）
         System.out.println("Please select your application type (Master/Phd):");
         String applicationType = scanner.next();
         student.setMyApplicationType(applicationType);
 
-        // 本科专业（String）
+        // major（String）
         System.out.println();
         System.out.println("Please select your home major code:");
         System.out.println("1. Computer Science (CS)");
@@ -30,7 +30,7 @@ public class UserInputStudent implements UserInput {
         Major major = new Major(majorName);
         student.setMyMajor(major);
 
-        // 本科学校等级（1-5）
+        // bachelor's degrees level（1-5）
         System.out.println();
         System.out.println("Please enter your Home School Rank (from 1 to 5, the larger the better):");
         int homeSchoolRank = scanner.nextInt();
@@ -45,7 +45,7 @@ public class UserInputStudent implements UserInput {
         Gpa gpa = new Gpa(CGPA, major_GPA);// create a new instance of GPA
         student.setMyGpa(gpa);
 
-        // 语言成绩
+        // language scores
         System.out.println("Please enter IELTS Score:");
         float IELTS = scanner.nextFloat();
         System.out.println("Please enter TOEFL Score:");
@@ -55,13 +55,14 @@ public class UserInputStudent implements UserInput {
         LanguageScore languageScore = new LanguageScore(IELTS, TOEFL, GRE);
         student.setMyLanguageScore(languageScore);
 
-        // 实习经历
+        // internship experi
         System.out.println();
-        System.out.println("How many rounds of internship did you have? Please enter your answer(maximun 5 rounds):");
+        System.out.println("How many numbers of internship did you have? Please enter your answer:");
         int rounds = scanner.nextInt();
-        // 每一段实习经历
+        // every internship experience
+        System.out.println("Please enter your company size one by one (from the scale of 1 to 5)");
         for (int i = 0; i < rounds; i++) {
-            System.out.println("Please enter next company_level (from 1 to 5, the higher the better):");
+            System.out.println("Company " + i + " : ");
             int companyLevel = scanner.nextInt();
             System.out.println("Please enter the duration:");
             double duration = scanner.nextDouble();
@@ -69,14 +70,15 @@ public class UserInputStudent implements UserInput {
             System.out.println("Internship information stored successfully!");
         }
 
-        // 推荐信
+        // recommendation letters
         System.out.println();
         System.out.println("How many recommendation letters did you get in total? Please enter your answer:");
         int number = scanner.nextInt();
-        // 每一封推荐信
+        // every single recommendation letter
         for (int i = 0; i < number; i++) {
             System.out.println(
-                    "Please enter the professor's level for your next recommendation letter (1 for Assistant Professor, 2 for Associate Professor, 3 for Professor, 4 for Chair Professor):");
+                    "Please enter the professor's level for your recommendation letter " + i
+                            + "(1 for Assistant Professor, 2 for Associate Professor, 3 for Professor, 4 for Chair Professor):");
             int prof_level = scanner.nextInt();
             System.out.println(
                     "How do you feel the quanlity of this letter, please enter the rank (from 1-5, the larger the better):");
@@ -85,11 +87,11 @@ public class UserInputStudent implements UserInput {
             System.out.println("Recommendation letter information stored successfully!");
         }
 
-        // 科研成果
+        // publications
         System.out.println();
         System.out.println("How many publications do you have? Please enter your answer:");
         int num = scanner.nextInt();
-        // 每一篇发表
+        // every single publication
         for (int i = 0; i < num; i++) {
             System.out.println("Please enter the level for your publication");
             int level = scanner.nextInt();
@@ -97,7 +99,7 @@ public class UserInputStudent implements UserInput {
             System.out.println("Publication information stored successfully!");
         }
 
-        // 偏好地区
+        // preferable region
         System.out.println();
         System.out.println("In the following region, which one do you prefer to study in?");
         System.out.println("1. USA");
@@ -110,7 +112,7 @@ public class UserInputStudent implements UserInput {
         int regionCode = scanner.nextInt();
         student.setMyPreferRegion(regionCode);
 
-        // 学费
+        // tuition fee
         System.out.println();
         System.out.println("Please enter your prefer yearly tuition:");
         float yearlyTuition = scanner.nextFloat();

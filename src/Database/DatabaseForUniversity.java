@@ -46,8 +46,8 @@ public class DatabaseForUniversity extends Database {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                AllUniversities.add(new University(values[0], values[1]));
-                AllUniversities.add(new University(values[0], values[1]));
+                AllUniversities.add(new University(values[0], values[1], values[2]));
+                AllUniversities.add(new University(values[0], values[1], values[2]));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -58,7 +58,7 @@ public class DatabaseForUniversity extends Database {
         // 将AllUniversities中的大学信息写入CSV文件
         try (PrintWriter writer = new PrintWriter(new FileWriter("./file/users.csv", false))) {
             for (University university : AllUniversities) {
-                writer.println(university.getName() + "," + university.getRegion());
+                writer.println(university.getName() + "," + university.getRegion() + "," + university.getTier());
             }
         } catch (IOException e) {
             e.printStackTrace();
