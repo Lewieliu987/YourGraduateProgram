@@ -44,7 +44,7 @@ public class DatabaseForUniversity extends Database {
         // 从CSV文件中读取大学信息, 并写入AllUniversities
         try (BufferedReader br = new BufferedReader(new FileReader("./file/universities.csv"))) {
             String line;
-            while (!(line = br.readLine()).equals(null)) {
+            while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
                 AllUniversities.add(new University(values[0], values[1]));
                 AllUniversities.add(new University(values[0], values[1]));

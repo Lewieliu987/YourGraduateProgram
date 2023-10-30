@@ -52,7 +52,7 @@ public class Parameter {
         ArrayList<String> records = new ArrayList<>();
         for (int i = 0; i <= tier; i++) {
             try {
-                while (!(line = br.readLine()).equals(null)) {
+                while ((line = br.readLine()) != null) {
                     // System.out.println(line);
                     records.add(line);
                 }
