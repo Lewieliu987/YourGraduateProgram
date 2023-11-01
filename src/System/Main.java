@@ -24,6 +24,8 @@ public class Main {
         User user = null;
         DatabaseForUser dfu = DatabaseForUser.getInstance();
         dfu.readUsersFromCSV();
+        DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
+        dfuu.readUniversitiesFromCSV();
         String answer = scanner.nextLine();
         while (true) {
 
@@ -143,11 +145,7 @@ public class Main {
                                                             System.out.println("Wrong role, please try again!");
                                                             continue;
                                                         }
-                                                        try {
-                                                            dfu.addUser(newUser);
-                                                        } catch (DuplicateUserException e) {
-                                                            System.out.println(e.getMessage());
-                                                        }
+                                                        dfu.addUser(newUser);
                                                         System.out.println("User added successfully!");
                                                         break;
                                                     }
@@ -198,7 +196,6 @@ public class Main {
                                             }
                                         }
                                     case "3":
-                                        DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
                                         while (true) {
                                             System.out.println("Please enter the operatifon code: " + '\n'
                                                     + "1. Add a new university to the system" + '\n'
@@ -216,7 +213,6 @@ public class Main {
                                                     University university = new University(name, region, tier);
                                                     try {
                                                         dfuu.addUniversity(university);
-                                                        dfuu.writeUniversitiesToCSV();
                                                     } catch (DuplicateUniversityException e) {
                                                         System.out.println(e.getMessage());
                                                     }
@@ -249,21 +245,11 @@ public class Main {
                     // 用IdSystem生成id，然后存入DatabaseForUser数据库
                     if (role.equals("Admin")) {
                         user = new Admin(name, password);
-                        try {
-                            dfu.addUser(user);
-                        } catch (DuplicateUserException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
+                        dfu.addUser(user);
                         break;
                     } else if (role.equals("Student")) {
                         user = new Student(name, password);
-                        try {
-                            dfu.addUser(user);
-                        } catch (DuplicateUserException e) {
-                            // TODO Auto-generated catch block
-                            e.printStackTrace();
-                        }
+                        dfu.addUser(user);
                         break;
                     } else {
                         System.out.println("Wrong role, please try again!");
@@ -271,6 +257,7 @@ public class Main {
                     }
                 }
                 dfu.writeUsersToCSV();
+                dfuu.writeUniversitiesToCSV();
                 System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
             } else {
                 System.out.println("Wrong input, please try again!");

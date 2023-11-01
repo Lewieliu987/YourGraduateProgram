@@ -27,6 +27,9 @@ public class Student extends User {
 
     public Student(String name, String password) {
         super(name, password, "false");
+        my_Internship = new Internship();
+        my_Publication = new Publication();
+        my_Recommendation = new Recommendation();
     }
 
     // Setter method for my_Major
@@ -38,22 +41,22 @@ public class Student extends User {
     public void setMyPreferRegion(int regionCode) {
         switch (regionCode) {
             case 1:
-                this.preferRegion.equals("USA");
+                this.preferRegion = "USA";
                 break;
             case 2:
-                this.preferRegion.equals("UK");
+                this.preferRegion = "UK";
                 break;
             case 3:
-                this.preferRegion.equals("Europe");
+                this.preferRegion = "Europe";
                 break;
             case 4:
-                this.preferRegion.equals("Japan");
+                this.preferRegion = "Japan";
                 break;
             case 5:
-                this.preferRegion.equals("Hong Kong & Singapore");
+                this.preferRegion = "Hong Kong & Singapore";
                 break;
             case 6:
-                this.preferRegion.equals("China Mainland");
+                this.preferRegion = "China Mainland";
                 break;
         }
         ;

@@ -39,9 +39,9 @@ public class UserInputStudent implements UserInput {
         // GPA
         System.out.println();
         System.out.println("Please enter your CGPA:");
-        int CGPA = scanner.nextInt();
+        Float CGPA = scanner.nextFloat();
         System.out.println("Please enter your Major GPA:");
-        int major_GPA = scanner.nextInt();
+        Float major_GPA = scanner.nextFloat();
         Gpa gpa = new Gpa(CGPA, major_GPA);// create a new instance of GPA
         student.setMyGpa(gpa);
 
@@ -61,7 +61,7 @@ public class UserInputStudent implements UserInput {
         int rounds = scanner.nextInt();
         // every internship experience
         System.out.println("Please enter your company size one by one (from the scale of 1 to 5)");
-        for (int i = 0; i < rounds; i++) {
+        for (int i = 1; i <= rounds; i++) {
             System.out.println("Company " + i + " : ");
             int companyLevel = scanner.nextInt();
             System.out.println("Please enter the duration:");
@@ -75,7 +75,7 @@ public class UserInputStudent implements UserInput {
         System.out.println("How many recommendation letters did you get in total? Please enter your answer:");
         int number = scanner.nextInt();
         // every single recommendation letter
-        for (int i = 0; i < number; i++) {
+        for (int i = 1; i <= number; i++) {
             System.out.println(
                     "Please enter the professor's level for your recommendation letter " + i
                             + "(1 for Assistant Professor, 2 for Associate Professor, 3 for Professor, 4 for Chair Professor):");

@@ -27,13 +27,8 @@ public class DatabaseForUser extends Database {
         return instance;
     }
 
-    public void addUser(User user) throws DuplicateUserException {
-        if (findUser(user.getId()) == null) {
-            AllUsers.add(user);
-        } // 若找到用户，需添加exception(duplicate)
-        else {
-            throw new DuplicateUserException("User with id " + user.getId() + " already exists.");
-        }
+    public void addUser(User user) {
+        AllUsers.add(user);
     }
 
     public User findUser(int id) {

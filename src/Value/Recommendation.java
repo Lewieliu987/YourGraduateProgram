@@ -5,8 +5,8 @@ import java.util.ArrayList;
 public class Recommendation {
     private ArrayList<EveryRecommendation> recommendations;
 
-    public Recommendation(ArrayList<EveryRecommendation> recommendations) {
-        this.recommendations = recommendations;
+    public Recommendation() {
+        this.recommendations = new ArrayList<EveryRecommendation>();
     }
 
     public void addRecommendation(EveryRecommendation recommendation) {
