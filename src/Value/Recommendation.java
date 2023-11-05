@@ -13,5 +13,9 @@ public class Recommendation {
         recommendations.add(recommendation);
     }
     // 需要遍历函数
+    
+    public ArrayList<EveryRecommendation> getRecommendations() {
+    	return recommendations;
+    }
 
 }

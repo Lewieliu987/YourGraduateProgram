@@ -13,23 +13,18 @@ public class InternshipTest {
     private Internship internship;
     private EveryInternship everyInternship;
 
-    @BeforeEach
-    void setUp() {
-        everyInternship = new EveryInternship(/* parameters as needed */);
+
+
+    @Test
+    void testAddInternship() {    	
+    	int expectedCompanyLevel = 4;
+    	double expectedTimeInterval = 2.5;
+        everyInternship = new EveryInternship(4, 2.5);
         ArrayList<EveryInternship> internships = new ArrayList<>();
         internships.add(everyInternship);
         internship = new Internship(internships);
-    }
-
-    @Test
-    void testAddInternship() {
-        // Arrange
-        EveryInternship newInternship = new EveryInternship(/* parameters as needed */);
-
-        // Act
-        internship.addInternship(newInternship);
-
         // Assert
-        assertEquals(newInternship, internship.getInternships().get(1));
+        assertEquals(everyInternship.getCompanyLevel(), internship.getInternships().get(0).getCompanyLevel());
+        assertEquals(everyInternship.getTimeInterval(), internship.getInternships().get(0).getTimeInterval());
     }
 }

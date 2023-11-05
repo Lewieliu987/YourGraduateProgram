@@ -2,7 +2,6 @@ package testValue;
 
 import Value.EveryPublication;
 import Value.Publication;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -10,26 +9,16 @@ import java.util.ArrayList;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PublicationTest {
-    private Publication publication;
-    private EveryPublication everyPublication;
-
-    @BeforeEach
-    void setUp() {
-        everyPublication = new EveryPublication(/* parameters as needed */);
-        ArrayList<EveryPublication> publications = new ArrayList<>();
-        publications.add(everyPublication);
-        publication = new Publication(publications);
-    }
-
+ 
     @Test
     void testAddPublication() {
-        // Arrange
-        EveryPublication newPublication = new EveryPublication(/* parameters as needed */);
-
-        // Act
-        publication.addPublication(newPublication);
+        int expectedLevel = 3;
+        EveryPublication everyPublication = new EveryPublication(expectedLevel);
+        ArrayList<EveryPublication> publications = new ArrayList<>();
+        publications.add(everyPublication);
+        Publication publication = new Publication(publications);
 
         // Assert
-        assertEquals(newPublication, publication.getPublications().get(1));
+        assertEquals(expectedLevel, publication.getPublications().get(0).getLevel());
     }
 }

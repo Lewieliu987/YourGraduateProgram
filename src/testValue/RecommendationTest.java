@@ -2,34 +2,25 @@ package testValue;
 
 import Value.EveryRecommendation;
 import Value.Recommendation;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class RecommendationTest {
-    private Recommendation recommendation;
-    private EveryRecommendation everyRecommendation;
-
-    @BeforeEach
-    void setUp() {
-        everyRecommendation = new EveryRecommendation(/* parameters as needed */);
-        ArrayList<EveryRecommendation> recommendations = new ArrayList<>();
-        recommendations.add(everyRecommendation);
-        recommendation = new Recommendation(recommendations);
-    }
-
+ 
     @Test
     void testAddRecommendation() {
-        // Arrange
-        EveryRecommendation newRecommendation = new EveryRecommendation(/* parameters as needed */);
-
-        // Act
-        recommendation.addRecommendation(newRecommendation);
+        int expectedProfessorLevel = 5;
+        int expectedQuality = 90;
+        EveryRecommendation everyRecommendation = new EveryRecommendation(expectedProfessorLevel, expectedQuality);
+        ArrayList<EveryRecommendation> recommendations = new ArrayList<>();
+        recommendations.add(everyRecommendation);
+        Recommendation recommendation = new Recommendation(recommendations);
 
         // Assert
-        assertEquals(newRecommendation, recommendation.getRecommendations().get(1));
+        assertEquals(expectedProfessorLevel, recommendation.getRecommendations().get(0).getProfessorLevel());
+        assertEquals(expectedQuality, recommendation.getRecommendations().get(0).getQuality());
     }
 }

@@ -13,4 +13,7 @@ public class Internship {
     public void addInternship(EveryInternship one) {
         internships.add(one);
     }
+    public ArrayList<EveryInternship> getInternships() {
+    	return internships;
+    }
 }
