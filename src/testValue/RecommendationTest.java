@@ -1,19 +1,35 @@
 package testValue;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+import Value.EveryRecommendation;
+import Value.Recommendation;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class RecommendationTest {
+import java.util.ArrayList;
 
-	@BeforeEach
-	void setUp() throws Exception {
-	}
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+public class RecommendationTest {
+    private Recommendation recommendation;
+    private EveryRecommendation everyRecommendation;
 
+    @BeforeEach
+    void setUp() {
+        everyRecommendation = new EveryRecommendation(/* parameters as needed */);
+        ArrayList<EveryRecommendation> recommendations = new ArrayList<>();
+        recommendations.add(everyRecommendation);
+        recommendation = new Recommendation(recommendations);
+    }
+
+    @Test
+    void testAddRecommendation() {
+        // Arrange
+        EveryRecommendation newRecommendation = new EveryRecommendation(/* parameters as needed */);
+
+        // Act
+        recommendation.addRecommendation(newRecommendation);
+
+        // Assert
+        assertEquals(newRecommendation, recommendation.getRecommendations().get(1));
+    }
 }
