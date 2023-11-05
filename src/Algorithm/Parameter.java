@@ -50,15 +50,15 @@ public class Parameter {
 
         String line = "";
         ArrayList<String> records = new ArrayList<>();
-        for (int i = 0; i <= tier; i++) {
-            try {
-                while ((line = br.readLine()) != null) {
-                    // System.out.println(line);
-                    records.add(line);
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
+        int lineCount = 0;
+        try {
+            while ((line = br.readLine()) != null && lineCount <= tier) {
+                // System.out.println(line);
+                records.add(line);
+                lineCount++;
             }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
         String theline = records.get(tier);
         double[] data = new double[9];

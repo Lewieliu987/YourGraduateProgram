@@ -38,4 +38,5 @@ public class Program {
     public String getMajorName() {
         return major.getMajorName();
     }
+
 }

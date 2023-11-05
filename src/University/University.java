@@ -42,6 +42,10 @@ public class University {
         return name;
     }
 
+    public ArrayList<Program> getProgramList() {
+        return programList;
+    }
+
     public String getRegion() {
         return region;
     }
