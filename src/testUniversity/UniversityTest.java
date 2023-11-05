@@ -18,10 +18,7 @@ class UniversityTest {
     }
 
 
-	@Test
-	void test() {
-		fail("Not yet implemented");
-	}
+
 	@Test
 	void testName() {
 	    // Arrange
