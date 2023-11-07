@@ -12,6 +12,9 @@ public class Publication {
     public void addPublication(EveryPublication publication) {
         publications.add(publication);
     }
+    public ArrayList<EveryPublication> getPublications() {
+    	return publications;
+    }
 
     // 需要遍历函数
 }

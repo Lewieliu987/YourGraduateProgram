@@ -61,14 +61,22 @@ public class Student extends User {
         }
         ;
     }
+    public String getPreferRegion() {
+    	return preferRegion;
+    }
 
     // Setter method for preferTuitionFee
     public void setMyPreferTuitionFee(double tuitionFee) {
         this.preferTuitionFee = tuitionFee;
     }
-
+    public double getPreferTuitionFee() {
+    	return preferTuitionFee;
+    }
     public void setMyHomeSchoolRank(int rank) {
         this.homeSchoolRank = rank;
+    }
+    public int getHomeSchoolRank() {
+        return homeSchoolRank;
     }
 
     // Setter method for my_Gpa

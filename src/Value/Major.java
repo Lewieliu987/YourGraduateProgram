@@ -11,7 +11,7 @@ public class Major {
         return name;
     }
 
-    public void setMajorName(String name) {
-        this.name = name;
+    public void setMajorName(String name_new) {
+        name = name_new;
     }
 }
