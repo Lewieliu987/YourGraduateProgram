@@ -14,9 +14,8 @@ public class PublicationTest {
     void testAddPublication() {
         int expectedLevel = 3;
         EveryPublication everyPublication = new EveryPublication(expectedLevel);
-        ArrayList<EveryPublication> publications = new ArrayList<>();
-        publications.add(everyPublication);
-        Publication publication = new Publication(publications);
+        Publication publication = new Publication();
+        publication.addPublication(everyPublication);
 
         // Assert
         assertEquals(expectedLevel, publication.getPublications().get(0).getLevel());

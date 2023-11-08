@@ -20,9 +20,8 @@ public class InternshipTest {
     	int expectedCompanyLevel = 4;
     	double expectedTimeInterval = 2.5;
         everyInternship = new EveryInternship(4, 2.5);
-        ArrayList<EveryInternship> internships = new ArrayList<>();
-        internships.add(everyInternship);
-        internship = new Internship(internships);
+        internship = new Internship();
+        internship.addInternship(everyInternship);
         // Assert
         assertEquals(everyInternship.getCompanyLevel(), internship.getInternships().get(0).getCompanyLevel());
         assertEquals(everyInternship.getTimeInterval(), internship.getInternships().get(0).getTimeInterval());
