@@ -12,6 +12,9 @@ public class Recommendation {
     public void addRecommendation(EveryRecommendation recommendation) {
         recommendations.add(recommendation);
     }
-    // 需要遍历函数
 
+    // 需要遍历函数
+    public int get_number_of_recommendations() {
+        return recommendations.size();
+    }
 }

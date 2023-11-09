@@ -25,6 +25,7 @@ public class Student extends User {
     private Recommendation my_Recommendation;
     private Internship my_Internship;
     private Publication my_Publication;
+    private int expected_tier;
 
     public Student(String name, String password) {
         super(name, password, "false");
@@ -105,10 +106,11 @@ public class Student extends User {
     }
 
     public void getMyAdmission() {
-        // 
+        //
         Predictor p = new Predictor();
-        int final_tier = p.getMaxProb(int background_tier, double cgpa, double mgpa, int num_letter,
-                    int num_intern, int num_paper);
+        this.expected_tier = p.getMaxProb(this.homeSchoolRank, this.my_Gpa.getCgpa(), this.my_Gpa.getMajor_gpa(),
+                this.my_Recommendation.get_number_of_recommendations(),
+                this.my_Internship.getNumInternships(), this.my_Internship.getNumInternships());
     }
 
 }

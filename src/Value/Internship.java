@@ -13,4 +13,8 @@ public class Internship {
     public void addInternship(EveryInternship one) {
         internships.add(one);
     }
+
+    public int getNumInternships() {
+        return internships.size();
+    }
 }
