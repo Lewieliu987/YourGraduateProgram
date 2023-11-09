@@ -105,6 +105,7 @@ public class Trainer extends NaiveBayes {
 
     // update ps to parameters database
     public void updateParameters() {
+        
     }
 
 }

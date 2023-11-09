@@ -1,5 +1,6 @@
 package User;
 
+import Algorithm.Predictor;
 import Value.EveryInternship;
 import Value.EveryPublication;
 import Value.EveryRecommendation;
@@ -104,7 +105,10 @@ public class Student extends User {
     }
 
     public void getMyAdmission() {
-        // 等王子轩
+        // 
+        Predictor p = new Predictor();
+        int final_tier = p.getMaxProb(int background_tier, double cgpa, double mgpa, int num_letter,
+                    int num_intern, int num_paper);
     }
 
 }
