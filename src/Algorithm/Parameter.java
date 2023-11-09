@@ -32,6 +32,9 @@ public class Parameter {
     // standard deviation(weighted Others|admission tier=x)
     private double sdOthers;
 
+    // prior probability
+    private double prior;
+
     public Parameter(int tier) {
         AdmissionTier = tier;
 
@@ -61,9 +64,9 @@ public class Parameter {
             e.printStackTrace();
         }
         String theline = records.get(tier);
-        double[] data = new double[9];
+        double[] data = new double[11];
 
-        for (int x = 0; x < 9; x++) {
+        for (int x = 1; x < 11; x++) {
             String num = theline.split(",")[x];
             if (num.contains("/")) {
                 String[] str = num.split("/");
@@ -83,6 +86,8 @@ public class Parameter {
         setMeanOthers(data[6]);
         setsdGPA(data[7]);
         setsdOthers(data[8]);
+
+        setPrior(data[10]);
     }
 
     public void setP1(double p) {
@@ -119,6 +124,10 @@ public class Parameter {
 
     public void setsdOthers(double sd) {
         sdOthers = sd;
+    }
+
+    public void setPrior(double p){
+        prior = p;
     }
 
     public int getTier() {
@@ -159,6 +168,10 @@ public class Parameter {
 
     public double getsdOthers() {
         return sdOthers;
+    }
+
+    public double getPrior() {
+        return prior;
     }
 
 }
