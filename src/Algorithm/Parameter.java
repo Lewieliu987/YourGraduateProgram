@@ -66,7 +66,7 @@ public class Parameter {
         String theline = records.get(tier);
         double[] data = new double[11];
 
-        for (int x = 1; x < 11; x++) {
+        for (int x = 0; x < 11; x++) {
             String num = theline.split(",")[x];
             if (num.contains("/")) {
                 String[] str = num.split("/");
@@ -76,16 +76,16 @@ public class Parameter {
             }
         }
 
-        setP1(data[0]);
-        setP2(data[1]);
-        setP3(data[2]);
-        setP4(data[3]);
-        setP5(data[4]);
+        setP1(data[1]);
+        setP2(data[2]);
+        setP3(data[3]);
+        setP4(data[4]);
+        setP5(data[5]);
 
-        setMeanGPA(data[5]);
-        setMeanOthers(data[6]);
-        setsdGPA(data[7]);
-        setsdOthers(data[8]);
+        setMeanGPA(data[6]);
+        setMeanOthers(data[7]);
+        setsdGPA(data[8]);
+        setsdOthers(data[9]);
 
         setPrior(data[10]);
     }
