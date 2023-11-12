@@ -1,5 +1,6 @@
 package User;
 
+import Algorithm.Predictor;
 import Value.EveryInternship;
 import Value.EveryPublication;
 import Value.EveryRecommendation;
@@ -24,6 +25,7 @@ public class Student extends User {
     private Recommendation my_Recommendation;
     private Internship my_Internship;
     private Publication my_Publication;
+    private int expected_tier;
 
     public Student(String name, String password) {
         super(name, password, "false");
@@ -112,7 +114,11 @@ public class Student extends User {
     }
 
     public void getMyAdmission() {
-        // 等王子轩
+        //
+        Predictor p = new Predictor();
+        this.expected_tier = p.getMaxProb(this.homeSchoolRank, this.my_Gpa.getCgpa(), this.my_Gpa.getMajor_gpa(),
+                this.my_Recommendation.get_number_of_recommendations(),
+                this.my_Internship.getNumInternships(), this.my_Internship.getNumInternships());
     }
 
 }
