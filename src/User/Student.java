@@ -1,5 +1,12 @@
 package User;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
 import Algorithm.Predictor;
 import Value.EveryInternship;
 import Value.EveryPublication;
@@ -111,6 +118,34 @@ public class Student extends User {
         this.expected_tier = p.getMaxProb(this.homeSchoolRank, this.my_Gpa.getCgpa(), this.my_Gpa.getMajor_gpa(),
                 this.my_Recommendation.get_number_of_recommendations(),
                 this.my_Internship.getNumInternships(), this.my_Internship.getNumInternships());
+        Map<Integer, String> universityMap = loadUniversities("./file/universities.csv");
+
+        // Get the university name according to the expected tier
+        String university = universityMap.get(this.expected_tier);
+
+        // Print the university name
+        System.out.println("The expected university is: " + university);
     }
 
+    private Map<Integer, String> loadUniversities(String filename) {
+        Map<Integer, String> universityMap = new HashMap<>();
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                // Assuming the tier is at the third position and the university name at the
+                // first position in the csv file
+                int tier = Integer.parseInt(values[2]);
+                String university = values[0];
+                universityMap.put(tier, university);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return universityMap;
+    }
 }
