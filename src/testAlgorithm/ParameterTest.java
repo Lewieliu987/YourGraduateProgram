@@ -4,8 +4,31 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class ParameterTest {
+import org.junit.jupiter.api.BeforeEach;
 
+class ParameterTest {
+	
+    private Parameter parameter;
+    
+    @BeforeEach
+    public void setup() {
+        // Initialize the Parameter object. For simplicity, I use the tier 1.
+        parameter = new Parameter(1);
+
+        // Set the values manually for testing purposes
+        parameter.setP1(0.1);
+        parameter.setP2(0.2);
+        parameter.setP3(0.3);
+        parameter.setP4(0.4);
+        parameter.setP5(0.5);
+
+        parameter.setMeanGPA(3.5);
+        parameter.setsdGPA(0.5);
+
+        parameter.setMeanOthers(4.0);
+        parameter.setsdOthers(0.4);
+    }
+	
     @Test
     void testParameter1() {
         // Test for AdmissionTier=1 (assuming it corresponds to the first line of your CSV file)
@@ -142,4 +165,54 @@ class ParameterTest {
         assertEquals(expectedMeanOthers, parameter.getmeanOthers());
         assertEquals(expectedSdOthers, parameter.getsdOthers());
     }
+    @Test
+    public void getTierTest() {
+        assertEquals(1, parameter.getTier());
+    }
+
+    @Test
+    public void getP1Test() {
+        assertEquals(0.1, parameter.getP1());
+    }
+
+    @Test
+    public void getP2Test() {
+        assertEquals(0.2, parameter.getP2());
+    }
+
+    @Test
+    public void getP3Test() {
+        assertEquals(0.3, parameter.getP3());
+    }
+
+    @Test
+    public void getP4Test() {
+        assertEquals(0.4, parameter.getP4());
+    }
+
+    @Test
+    public void getP5Test() {
+        assertEquals(0.5, parameter.getP5());
+    }
+
+    @Test
+    public void getmeanGPATest() {
+        assertEquals(3.5, parameter.getmeanGPA());
+    }
+
+    @Test
+    public void getsdGPATest() {
+        assertEquals(0.5, parameter.getsdGPA());
+    }
+
+    @Test
+    public void getmeanOthersTest() {
+        assertEquals(4.0, parameter.getmeanOthers());
+    }
+
+    @Test
+    public void getsdOthersTest() {
+        assertEquals(0.4, parameter.getsdOthers());
+    }
+
 }

@@ -15,7 +15,7 @@ public class Trainer extends NaiveBayes {
     private ArrayList<DatapointsAtier> fiveDataTiers;
 
     public Trainer() {
-        // load parameters storded in database
+        // load parameters stored in database
         super();
 
         database = new ArrayList<Datapoint>();
