@@ -55,7 +55,7 @@ public class Main {
                         if (!user.getPermission()) {
                             // for user，use while loop，until exit
                             // studentServiceLoop:
-                            while (true) {
+                            while (true) {// to calculate the probability
                                 // 1. 更改基本信息 2. 更改申请信息 3. 查看录取概率 4. 退出
                                 System.out.println("Welcome, " + user.getUsername() + "\n"
                                         + "Please enter one of the following number to use services:" + "\n" +

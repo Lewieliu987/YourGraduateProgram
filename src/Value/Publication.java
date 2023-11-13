@@ -17,4 +17,7 @@ public class Publication {
     }
 
     // 需要遍历函数
+    public int getPublicationCount() {
+        return publications.size();
+    }
 }

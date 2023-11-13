@@ -13,7 +13,13 @@ public class Internship {
     public void addInternship(EveryInternship one) {
         internships.add(one);
     }
+<<<<<<< HEAD
     public ArrayList<EveryInternship> getInternships() {
     	return internships;
+=======
+
+    public int getNumInternships() {
+        return internships.size();
+>>>>>>> branch 'main' of git@github.com:Lewieliu987/YourGraduateProgram.git
     }
 }
