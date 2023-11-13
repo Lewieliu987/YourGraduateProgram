@@ -28,9 +28,7 @@ public class University {
         Program newProgram = new Program(pId, pName, pType, pRate, pMajorName);
         programList.add(newProgram);
     }
-    public ArrayList<Program> getProgramList(){
-    	return programList;
-    }
+
     public Program findProgram(String pId) {
         for (int i = 0; i < programList.size(); i++) {
             if (programList.get(i).getId() == pId) {
