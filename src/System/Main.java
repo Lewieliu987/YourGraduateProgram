@@ -85,7 +85,7 @@ public class Main {
                                     UserInputStudent inputstudent = new UserInputStudent();
                                     inputstudent.inputUser(student);
                                     student.getMyAdmission();
-
+                                    System.out.println(student.getTier());
                                 case "4":
                                     System.out.println("System exited successfully!");
                                     break testPasswordLoop;

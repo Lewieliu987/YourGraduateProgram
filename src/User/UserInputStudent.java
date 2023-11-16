@@ -39,10 +39,20 @@ public class UserInputStudent implements UserInput {
         // GPA
         System.out.println();
         System.out.println("Please enter your CGPA:");
-        Float CGPA = scanner.nextFloat();
+        String CGPA = scanner.next();
+        String[] parts = CGPA.split("/");
+        if (parts.length != 2) {
+            throw new IllegalArgumentException("Invalid GPA format: " + CGPA);
+        }
+        float cgpa = Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]);
         System.out.println("Please enter your Major GPA:");
-        Float major_GPA = scanner.nextFloat();
-        Gpa gpa = new Gpa(CGPA, major_GPA);// create a new instance of GPA
+        String major_GPA = scanner.next();
+        String[] part = major_GPA.split("/");
+        if (part.length != 2) {
+            throw new IllegalArgumentException("Invalid GPA format: " + major_GPA);
+        }
+        float mgpa = Float.parseFloat(part[0]) / Float.parseFloat(part[1]);
+        Gpa gpa = new Gpa(cgpa, mgpa);
         student.setMyGpa(gpa);
 
         // language scores

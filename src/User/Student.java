@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import Algorithm.Predictor;
+import System.UniversityFilter;
 import Value.EveryInternship;
 import Value.EveryPublication;
 import Value.EveryRecommendation;
@@ -62,7 +63,7 @@ public class Student extends User {
                 this.preferRegion = "Japan";
                 break;
             case 5:
-                this.preferRegion = "Hong Kong & Singapore";
+                this.preferRegion = "Singapore";
                 break;
             case 6:
                 this.preferRegion = "China Mainland";
@@ -118,13 +119,25 @@ public class Student extends User {
         this.expected_tier = p.getMaxProb(this.homeSchoolRank, this.my_Gpa.getCgpa(), this.my_Gpa.getMajor_gpa(),
                 this.my_Recommendation.get_number_of_recommendations(),
                 this.my_Internship.getNumInternships(), this.my_Internship.getNumInternships());
-        Map<Integer, String> universityMap = loadUniversities("./file/universities.csv");
-
-        // Get the university name according to the expected tier
-        String university = universityMap.get(this.expected_tier);
-
+        // Map<Integer, String> universityMap =
+        // loadUniversities("./file/universities.csv");
+        Map<Integer, String> universityMap = new HashMap<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader("./file/universities.csv"))) {
+            String line;
+            int id = 1; // Or however you generate IDs
+            while ((line = reader.readLine()) != null) {
+                // Store the complete line in the map
+                universityMap.put(id++, line);
+            }
+        } catch (IOException e) {
+            System.err.println("Error reading file: " + e.getMessage());
+        }
+        // for (Map.Entry<Integer, String> entry : universityMap.entrySet()) {
+        // System.out.println("Key: " + entry.getKey() + ", Value: " +
+        // entry.getValue());
+        // }
         // Print the university name
-        System.out.println("The expected university is: " + university);
+        UniversityFilter.printUniversitiesByTier(universityMap, expected_tier, preferRegion);
     }
 
     private Map<Integer, String> loadUniversities(String filename) {
@@ -147,5 +160,9 @@ public class Student extends User {
         }
 
         return universityMap;
+    }
+
+    public int getTier() {
+        return this.expected_tier;
     }
 }
