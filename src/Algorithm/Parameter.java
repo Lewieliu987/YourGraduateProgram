@@ -83,8 +83,8 @@ public class Parameter {
         setP5(data[5]);
 
         setMeanGPA(data[6]);
-        setMeanOthers(data[7]);
-        setsdGPA(data[8]);
+        setsdGPA(data[7]);
+        setMeanOthers(data[8]);
         setsdOthers(data[9]);
 
         setPrior(data[10]);
