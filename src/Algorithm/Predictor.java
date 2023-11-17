@@ -81,12 +81,12 @@ public class Predictor extends NaiveBayes {
         }
 
         // evidence: Weighted Others
-        for (int i = 0;i<5;i++){
-            ComputerGuassian g = new ComputerGuassian();
-            posterior[i] *= g.getP(this.getps().get(i).getmeanOthers(), 
-                                   this.getps().get(i).getsdOthers(), 
-                                   wothers.getWeighted());
-        }
+        // for (int i = 0;i<5;i++){
+        //     ComputerGuassian g = new ComputerGuassian();
+        //     posterior[i] *= g.getP(this.getps().get(i).getmeanOthers(), 
+        //                            this.getps().get(i).getsdOthers(), 
+        //                            wothers.getWeighted());
+        // }
 
 
     }
