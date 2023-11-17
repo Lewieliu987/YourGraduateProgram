@@ -1,4 +1,4 @@
-tier,P(b1|tier),P(b2|tier),P(b3|tier),P(b4|tier),P(b5|tier),mean(gpa),sd(gpa),mean(other),mean(others),prior
+tier,P(b1|tier),P(b2|tier),P(b3|tier),P(b4|tier),P(b5|tier),mean(gpa),sd(gpa),mean(other),sd(others),prior
 1,0.8,0.2,0,0,0,3.9/4,0.06,3,0.5,0.2
 2,0.1,0.8,0.1,0,0,3.77/4.0,0.06,3,0.5,0.2
 3,0,0.1,0.8,0.1,0,3.6/4,0.06,3,0.5,0.2
