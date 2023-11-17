@@ -16,9 +16,9 @@ import User.UserInputStudent;
 
 public class Main {
     public static void main(String[] args) {
-        // Trainer t = new Trainer();
-        // t.trainParameters();
-        // t.updateParameters();
+        Trainer t = new Trainer();
+        t.trainParameters();
+        t.updateParameters();
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to CityU YGP System, Log in, Register?");
