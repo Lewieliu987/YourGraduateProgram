@@ -6,7 +6,7 @@ public class Program {
     private String id;
     private String name;
     // 不同的项目有不同的major
-    private Major major;
+    private Major major = new Major();
     private String degree_type;
     private double acceptance_rate;
 

@@ -27,7 +27,8 @@ public class UserInputStudent implements UserInput {
         System.out.println("4. Physics (PHY)");
         System.out.println("Enter your selection:");
         String majorName = scanner.next();
-        Major major = new Major(majorName);
+        Major major = new Major();
+        major.setMajorName(majorName);
         student.setMyMajor(major);
 
         // bachelor's degrees level（1-5）

@@ -1,5 +1,8 @@
 package System;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class IdSystem {
@@ -23,10 +26,11 @@ public class IdSystem {
     public int generateUserId(boolean isAdmin) {
         if (isAdmin) {
             int newId = 341000 + numberOfAdmin;
-            numberOfStudent++;
+            numberOfAdmin++;
             AllAdminId.add(newId);
             return newId;
         } else {
+
             int newId = 241000 + numberOfStudent;
             numberOfStudent++;
             AllStudentId.add(newId);
