@@ -6,7 +6,7 @@ public class University {
     private String name;
     private String region;
     private String tier;
-    private ArrayList<Program> programList;
+    private ArrayList<Program> programList = new ArrayList<>();
 
     public University(String name, String region, String tier) {// university不需id
         this.name = name;
@@ -31,7 +31,7 @@ public class University {
 
     public Program findProgram(String pId) {
         for (int i = 0; i < programList.size(); i++) {
-            if (programList.get(i).getId() == pId) {
+            if (programList.get(i).getId().equals(pId)) {
                 return programList.get(i);
             }
         }

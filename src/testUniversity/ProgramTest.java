@@ -13,7 +13,8 @@ class ProgramTest {
 	private Program program;
 	@BeforeEach
     void setUp() {
-        Major major = new Major("Test Major");
+        Major major = new Major();
+        major.setMajorName("Test Major");
         program = new Program("Test ID", "Test Program", "Test Degree Type", 0.5, "Test Major");
     }
 
