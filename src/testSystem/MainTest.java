@@ -18,7 +18,7 @@ public class MainTest {
         mainInstance = new Main();
     }
 
-    /*@Test
+    @Test
     public void testLogin() {
         String input = "Log in\n241007\nmypassword\n1\n\nHui\nnewpassword\nm\n";
         InputStream in = new ByteArrayInputStream(input.getBytes());
@@ -28,7 +28,7 @@ public class MainTest {
         mainInstance.main(new String[]{});
         System.setIn(System.in);
         // Add assertions here to validate the  expected behavior
-    }*/
+    }
 
     @Test
     public void testRegister() {
