@@ -32,6 +32,7 @@ public class DatabaseForUser extends Database {
     }
 
     public User findUser(int id) {
+
         for (int i = 0; i < AllUsers.size(); i++) {
             if (AllUsers.get(i).getId() == id) {
                 return AllUsers.get(i);
@@ -55,7 +56,7 @@ public class DatabaseForUser extends Database {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                if (values[2].equals("true")) {
+                if (values[3].equals("true")) {
                     AllUsers.add(new Admin(values[1], values[2]));
                 } else {
                     AllUsers.add(new Student(values[1], values[2]));

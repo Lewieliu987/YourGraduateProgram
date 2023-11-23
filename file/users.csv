@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 Harvard University,USA,1
 Harvard University,USA,1
 Stanford University,USA,2
@@ -238,3 +239,10 @@ Southwest University,China Mainland,4
 Southwest University,China Mainland,4
 Harbin Institute of Technology,China Mainland,5
 Harbin Institute of Technology,China Mainland,5
+=======
+341000,www,888888,true
+241000,www,888888,false
+241001,sss,777777,false
+341001,ddd,Admin,true
+241002,ddd,222222,false
+>>>>>>> branch 'main' of git@github.com:Lewieliu987/YourGraduateProgram.git
