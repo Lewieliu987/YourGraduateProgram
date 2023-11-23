@@ -11,7 +11,6 @@ import java.util.ArrayList;
 
 import Other.Datapoint;
 import Other.DatapointsAtier;
-import User.User;
 
 public class Trainer extends NaiveBayes {
 
