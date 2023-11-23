@@ -12,6 +12,8 @@ public class University {
         this.name = name;
         this.region = region;
         this.tier = tier;
+        this.programList = new ArrayList<Program>();
+
     }
 
     public void addProgram(String pName, String pType, double pRate, String pMajorName) {
