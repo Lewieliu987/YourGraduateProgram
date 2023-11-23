@@ -90,8 +90,16 @@ public class Predictor extends NaiveBayes {
 
 
     }
-
-    // return the index of tier with the largest posterior
+    public double[] getPosterior() {
+    	return posterior;
+    }
+    public WeightedGPA getWGPA() {
+    	return wgpa;
+    }
+    public WeightedOthers getWothers() {
+    	return wothers;
+    }
+     // return the index of tier with the largest posterior
     // pass the paramters
     public int getMaxProb(int tier, double cgpa, double mgpa, int num1,
                     int num2, int num3){

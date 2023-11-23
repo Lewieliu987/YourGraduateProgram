@@ -11,7 +11,7 @@ public class GpaTest {
 
     @BeforeEach
     void setUp() {
-        gpa = new Gpa(3.8, 4.0);
+        gpa = new Gpa(3.8f, 4.0f);
     }
 
     @Test

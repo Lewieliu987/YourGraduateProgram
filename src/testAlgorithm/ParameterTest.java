@@ -59,6 +59,7 @@ class ParameterTest {
         
 
     }
+    @Test
     void testParameter2() {
         
         int tier = 2;
@@ -85,6 +86,7 @@ class ParameterTest {
         assertEquals(expectedMeanOthers, parameter.getmeanOthers());
         assertEquals(expectedSdOthers, parameter.getsdOthers());
     }
+    @Test
     void testParameter3() {
     	 // Test for AdmissionTier=1 (assuming it corresponds to the first line of your CSV file)
         int tier = 3;
@@ -112,6 +114,7 @@ class ParameterTest {
         assertEquals(expectedMeanOthers, parameter.getmeanOthers());
         assertEquals(expectedSdOthers, parameter.getsdOthers());
     }
+    @Test
     void testParameter4() {
     	 // Test for AdmissionTier=1 (assuming it corresponds to the first line of your CSV file)
         int tier = 4;
@@ -138,6 +141,7 @@ class ParameterTest {
         assertEquals(expectedMeanOthers, parameter.getmeanOthers());
         assertEquals(expectedSdOthers, parameter.getsdOthers());
     }
+    @Test
     void testParameter5() {
     	 // Test for AdmissionTier=1 (assuming it corresponds to the first line of your CSV file)
         int tier = 5;

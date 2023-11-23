@@ -26,4 +26,5 @@ public class InternshipTest {
         assertEquals(everyInternship.getCompanyLevel(), internship.getInternships().get(0).getCompanyLevel());
         assertEquals(everyInternship.getTimeInterval(), internship.getInternships().get(0).getTimeInterval());
     }
+
 }
