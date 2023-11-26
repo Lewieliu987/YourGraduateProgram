@@ -103,8 +103,7 @@ public class Main {
                                     + "Please enter one of the following number to use services:" + "\n" +
                                     "1. Modify my account information" + "\n" + "2. Modify Database for users"
                                     + "\n" +
-                                    "3. Modify Database for universities" + "\n" + "Retrain naive bayes model"
-                                    + "\n"
+                                    "3. Modify Database for universities" + "\n"
                                     + "5. Exit");
                             String choice = scanner.next();
                             switch (choice) {
