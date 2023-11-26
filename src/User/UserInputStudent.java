@@ -129,6 +129,6 @@ public class UserInputStudent implements UserInput {
         float yearlyTuition = scanner.nextFloat();
         student.setMyPreferTuitionFee(yearlyTuition);
 
-        scanner.close();
+        // scanner.close();
     }
 }
