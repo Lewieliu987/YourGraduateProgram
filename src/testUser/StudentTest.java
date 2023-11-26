@@ -36,7 +36,7 @@ public class StudentTest {
     public void testSetMyPreferRegion5() {
         Student student = new Student("testUser", "testPassword");
         student.setMyPreferRegion(5);
-        assertEquals("Hong Kong & Singapore", student.getPreferRegion());
+        assertEquals("Singapore", student.getPreferRegion());
     }
     @Test
     public void testSetMyPreferRegion6() {

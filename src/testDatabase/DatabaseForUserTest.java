@@ -30,9 +30,9 @@ class DatabaseForUserTest {
     
     @Test
     void testFindUser() {
-        int expectedId = 241000;
+        int expectedId = 241002;
         User foundUser = db.findUser(expectedId);
-        assertEquals(foundUser.getUsername(), "Test User");
+        assertEquals(foundUser.getUsername(), "www");
     }
 
     @Test

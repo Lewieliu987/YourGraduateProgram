@@ -48,6 +48,7 @@ public class Main {
 
             testPasswordLoop: while (true) {
                 String password = scanner.next();
+                System.out.println(user.getPassword());
                 if (password.equals(user.getPassword())) {
                     System.out.println(user.getPassword());
                     if (!user.getPermission()) {
