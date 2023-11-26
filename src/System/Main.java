@@ -258,7 +258,7 @@ public class Main {
                 }
             }
             dfu.writeUsersToCSV();
-            dfuu.writeUniversitiesToCSV();
+            //dfuu.writeUniversitiesToCSV();
             System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
         }
         scanner.close();
