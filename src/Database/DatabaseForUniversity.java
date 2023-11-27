@@ -23,7 +23,7 @@ public class DatabaseForUniversity extends Database {
     }
 
     public void addUniversity(University university) throws DuplicateUniversityException {
-        if (findUniversity(university.getName()).equals(null)) {
+        if (findUniversity(university.getName()) == null) {
             AllUniversities.add(university);
         } // 若找到大学，需添加exception(duplicate)
         else {
@@ -34,6 +34,8 @@ public class DatabaseForUniversity extends Database {
     public University findUniversity(String name) {
         for (int i = 0; i < AllUniversities.size(); i++) {
             if (AllUniversities.get(i).getName().equals(name)) {
+                System.out.println(AllUniversities.get(i).getName() + " found!");
+                System.out.println("");
                 return AllUniversities.get(i);
             }
         }

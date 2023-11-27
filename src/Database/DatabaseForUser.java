@@ -29,6 +29,7 @@ public class DatabaseForUser extends Database {
 
     public void addUser(User user) {
         AllUsers.add(user);
+        instance.writeUsersToCSV();
     }
 
     public User findUser(int id) {
@@ -48,6 +49,7 @@ public class DatabaseForUser extends Database {
         else {
             throw new UserNotFoundException("User with id " + idToDelete + " not found.");
         }
+        instance.writeUsersToCSV();
     }
 
     public void readUsersFromCSV() {

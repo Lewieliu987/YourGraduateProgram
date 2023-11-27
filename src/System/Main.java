@@ -57,10 +57,8 @@ public class Main {
                             // 1. 更改基本信息 2. 更改申请信息 3. 查看录取概率 4. 退出
                             System.out.println("Welcome, " + user.getUsername() + "\n"
                                     + "Please enter one of the following number to use services:" + "\n" +
-                                    "1. Modify my account information" + "\n"
-                                    + "2. Modify my applicaiton information"
-                                    + "\n" +
-                                    "3. Check my admission probability" + "\n" + "4. Exit");
+                                    "1. Modify my account information" + "\n" +
+                                    "2. Check my admission probability" + "\n" + "3. Exit");
                             String choice = scanner.next();
                             switch (choice) {
                                 case "1":
@@ -72,7 +70,7 @@ public class Main {
                                     user.resetPassword(scanner.nextLine());
                                     dfu.writeUsersToCSV();
                                     System.out.println(
-                                            "Your information has been updated successfully! Press c to use other services");
+                                            "Your information has been updated successfully! Press c to use other services or other characters to quit this service");
                                     char continueOrNot = scanner.next().charAt(0);
                                     if (continueOrNot == 'c') {
                                         continue;
@@ -80,17 +78,20 @@ public class Main {
                                         break;
                                     }
                                 case "2":
-                                    UserInputStudent inputStudent = new UserInputStudent();
-                                    inputStudent.inputUser(user);
-                                    System.out.println("Your information has been updated successfully!");
-                                    System.out.println();
-                                case "3":
                                     Student student = (Student) user;
                                     UserInputStudent inputstudent = new UserInputStudent();
                                     inputstudent.inputUser(student);
                                     student.getMyAdmission();
                                     System.out.println(student.getTier());
-                                case "4":
+                                    System.out.println(
+                                            "Press c to use other services or other characters to quit this service");
+                                    char continueOrnot = scanner.next().charAt(0);
+                                    if (continueOrnot == 'c') {
+                                        continue;
+                                    } else {
+                                        break;
+                                    }
+                                case "3":
                                     System.out.println("System exited successfully!");
                                     break testPasswordLoop;
                             }
@@ -104,8 +105,9 @@ public class Main {
                                     "1. Modify my account information" + "\n" + "2. Modify Database for users"
                                     + "\n" +
                                     "3. Modify Database for universities" + "\n"
-                                    + "5. Exit");
+                                    + "4. Exit");
                             String choice = scanner.next();
+                            scanner.nextLine();
                             switch (choice) {
                                 case "1":
                                     System.out.println("Please enter your new name and password");
@@ -116,6 +118,7 @@ public class Main {
                                     System.out.println(
                                             "Your information has been updated successfully! Press c to use other services");
                                     char continueOrNot = scanner.next().charAt(0);
+                                    scanner.nextLine();
                                     if (continueOrNot == 'c') {
                                         continue;
                                     } else {
@@ -127,40 +130,42 @@ public class Main {
                                         System.out.println("Please enter the operation code: " + '\n'
                                                 + "1. Add user" + '\n' + "2. Delete user" + '\n' + "3. Search user"
                                                 + '\n' + "4. Exit");
-                                        String operationCode = scanner.next();
+                                        String operationCode = scanner.nextLine();
                                         switch (operationCode) {
                                             case "1":
                                                 System.out.println(
                                                         "Please enter the user's name, password and role (Student/Admin):");
-                                                String n = scanner.nextLine(); // user name
-                                                String p = scanner.next(); // user password
-                                                while (true) {
-                                                    String r = scanner.next(); // user role
-                                                    User newUser;
-                                                    if (r.equals("Admin")) {
-                                                        newUser = new Admin(n, p);
-                                                    } else if (r.equals("Student")) {
-                                                        newUser = new Student(n, p);
-                                                    } else {
-                                                        System.out.println("Wrong role, please try again!");
-                                                        continue;
-                                                    }
-                                                    dfu.addUser(newUser);
-                                                    System.out.println("User added successfully!");
-                                                    break;
+                                                String n = scanner.nextLine().trim(); // user name
+                                                String p = scanner.nextLine().trim(); // user password
+
+                                                String r = scanner.nextLine().trim(); // user role
+                                                User newUser;
+                                                if (r.equals("Admin")) {
+                                                    newUser = new Admin(n, p);
+                                                } else if (r.equals("Student")) {
+                                                    newUser = new Student(n, p);
+                                                } else {
+                                                    System.out.println("Wrong role, please try again!");
+                                                    continue;
                                                 }
+                                                dfu.addUser(newUser);
+                                                System.out.println("User added successfully!");
+                                                break;
+
                                             case "2":
                                                 while (true) {
                                                     System.out.println("Please enter the user's id:");
                                                     int idToDelete = scanner.nextInt();
+                                                    scanner.nextLine();
                                                     try {
                                                         dfu.deleteUser(idToDelete);
                                                     } catch (UserNotFoundException e) {
                                                         System.out.println(e.getMessage());
                                                     } // Exception
                                                     System.out.println("User deleted successfully!");
-                                                    System.out.println("Press c to continue");
-                                                    char continueorNot = scanner.next().charAt(0);
+                                                    System.out.println(
+                                                            "Press c to continue or other characters to quit this service");
+                                                    char continueorNot = scanner.nextLine().charAt(0);
                                                     if (continueorNot == 'c') {
                                                         continue;
                                                     } else {
@@ -168,10 +173,12 @@ public class Main {
                                                     }
                                                 } // there is a problem that after user being deleted，the id still
                                                   // exists
+                                                break;
                                             case "3":
                                                 while (true) {
                                                     System.out.println("Please enter the user's id:");
                                                     int idToSearch = scanner.nextInt();
+                                                    scanner.nextLine();
                                                     User userToSearch = dfu.findUser(idToSearch);
                                                     if (userToSearch == null) {
                                                         System.out.println("User not found!");
@@ -182,14 +189,16 @@ public class Main {
                                                             + "User's name: " + userToSearch.getUsername()
                                                             + "User's password: " + userToSearch.getPassword()
                                                             + "User's role: " + userToSearch.getRole());
-                                                    System.out.println("Press c to continue");
-                                                    char continueorNot = scanner.next().charAt(0);
+                                                    System.out.println(
+                                                            "Press c to continue or other characters to quit this service");
+                                                    char continueorNot = scanner.nextLine().charAt(0);
                                                     if (continueorNot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
                                                     }
                                                 }
+                                                break;
                                             case "4":
                                                 System.out.println("User Modify System exited successfully!");
                                                 break databaseForUserLoop;
@@ -198,11 +207,11 @@ public class Main {
                                 case "3":
                                     while (true) {
                                         System.out.println("Please enter the operatifon code: " + '\n'
-                                                + "1. Add a new university to the system" + '\n'
-                                                + "2. Search university" + '\n' + "3. Exit");
+                                                + "1. Add a new university to the system" + '\n' + "2. Exit");
                                         String operationCode = scanner.next();
                                         switch (operationCode) {
                                             case "1":
+                                                scanner.nextLine();
                                                 System.out.println("Please enter the name for the University");
                                                 String name = scanner.nextLine();
                                                 System.out.println("Please enter the region of the University");
@@ -210,17 +219,25 @@ public class Main {
                                                 System.out.println(
                                                         "Please enter the tier of the university(1 for 1st to 10th, 2 for 11th to 30th, 3 for 31th to 50th, 4 for 50th to 70th, 5 for 71th to 100th )");
                                                 String tier = scanner.next();
+                                                scanner.nextLine();
                                                 University university = new University(name, region, tier);
                                                 try {
                                                     dfuu.addUniversity(university);
+                                                    System.out.println(
+                                                            name + " added successfully");
                                                 } catch (DuplicateUniversityException e) {
                                                     System.out.println(e.getMessage());
                                                 }
+                                                System.out.println(
+                                                        "Press c to continue or other characters to quit this service");
+                                                String input = scanner.nextLine();
+                                                char continueorNot = (input.length() > 0) ? input.charAt(0) : 'x';
+                                                if (continueorNot == 'c') {
+                                                    continue;
+                                                } else {
+                                                    break;
+                                                }
                                             case "2":
-                                                System.out.println("Please enter the name for the University");
-                                                String univ_name = scanner.nextLine();
-                                                dfuu.findUniversity(univ_name);
-                                            case "3":
                                                 System.out.println("System exited successfully!");
                                                 break testPasswordLoop;
                                         }
