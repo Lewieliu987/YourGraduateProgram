@@ -10,13 +10,25 @@ In addition to empowering applicants, our system also caters to administrators w
 
 By combining the power of sophisticated machine learning techniques with an extensive and meticulously maintained database, our project provides a comprehensive solution that assists applicants in making informed decisions about their academic journeys. Simultaneously, administrators can efficiently manage and update the system, ensuring its accuracy and reliability over time. 
 
-### User Guideline : How to run it (maybe provide a sample with some screenshots)?
+### User Guideline 
 Please use SSH to clone the project  
 Please add your code to your local repo before commit  
 Remember to pull(update) the project before any updates
 Please enter "git remote update origin --prune" in terminal if you cannot find branches  
 Please enter "find . -name '*.java' | xargs wc -l" to check the number of java lines
-### Configuration Management (Refer to sample group08)
+
+### File Structure Description
+./file: necessary csv files for I/O system, including pre-trained data sets & newest QS ranking information
+./src: core java files for the whole programe
+  ./src/Algorithm: alogorithm java files
+  ./src/Database: database java files
+  ./src/Exceptions: exception java files
+  ./src/Other: other necessary components
+  ./src/System: core part
+  ./src/University: universities's object information
+  ./src/User: users' object & I/O information
+  ./src/Value: objects' value information
+./test: test cases for development
 
 ### Credits : Group Members
 Wang Zixuan 
