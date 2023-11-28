@@ -18,17 +18,17 @@ Please enter "git remote update origin --prune" in terminal if you cannot find b
 Please enter "find . -name '*.java' | xargs wc -l" to check the number of java lines
 
 ### File Structure Description
-./file: necessary csv files for I/O system, including pre-trained data sets & newest QS ranking information
-./src: core java files for the whole programe
-  ./src/Algorithm: alogorithm java files
-  ./src/Database: database java files
-  ./src/Exceptions: exception java files
-  ./src/Other: other necessary components
-  ./src/System: core part
-  ./src/University: universities's object information
-  ./src/User: users' object & I/O information
-  ./src/Value: objects' value information
-./test: test cases for development
+./file: necessary csv files for I/O system, including pre-trained data sets & newest QS ranking information /n
+./src: core java files for the whole programe /n
+  ./src/Algorithm: alogorithm java files /n
+  ./src/Database: database java files /n
+  ./src/Exceptions: exception java files /n
+  ./src/Other: other necessary components /n
+  ./src/System: core part /n
+  ./src/University: universities's object information /n
+  ./src/User: users' object & I/O information /n
+  ./src/Value: objects' value information /n
+./test: test cases for development /n
 
 ### Credits : Group Members
 Wang Zixuan 
