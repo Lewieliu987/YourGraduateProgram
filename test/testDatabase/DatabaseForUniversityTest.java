@@ -15,12 +15,14 @@ public class DatabaseForUniversityTest {
     private DatabaseForUniversity database;
     private University university1;
     private University university2;
+    
 
     @BeforeEach
     public void setup() throws IOException {
         database = DatabaseForUniversity.getInstance();
-        university1 = new University("Harvard", "USA", "1");
-        university2 = new University("Stanford", "USA", "1");
+        database.readUniversitiesFromCSV();
+        //database.writeUniversitiesToCSV();
+
     }
 
     @Test
@@ -31,6 +33,22 @@ public class DatabaseForUniversityTest {
     @Test
     public void findNonExistentUniversityTest() {
     	assertNull(database.findUniversity("NonExistent"));
+    }
+    @Test
+    public void addUniversityTest() {
+    	
+    	try { 		
+
+    	 	String expectedName="Harvard University";
+    	 	university2 = database.findUniversity(expectedName);
+    	 	System.out.println(university2.getName());
+    	 	assertEquals(university2.getName(), expectedName);
+    	 	
+    	} catch(Exception e) {
+    		System.out.println(e);
+    	}
+    	
+    	
     }
     
    

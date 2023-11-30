@@ -54,6 +54,7 @@ public class Main {
 
             testPasswordLoop: while (true) {
                 String password = scanner.next();
+                System.out.println(user.getPassword());
                 if (password.equals(user.getPassword())) {
                     System.out.println("PASSWORD: " + user.getPassword() + " CORRECT");
                     if (!user.getPermission()) {
@@ -290,7 +291,11 @@ public class Main {
                 }
             }
             dfu.writeUsersToCSV();
+<<<<<<< HEAD
             // dfuu.writeUniversitiesToCSV();
+=======
+            //dfuu.writeUniversitiesToCSV();
+>>>>>>> branch 'for_test_cases_2' of git@github.com:Lewieliu987/YourGraduateProgram.git
             System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
         }
         scanner.close();

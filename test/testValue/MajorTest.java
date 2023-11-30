@@ -11,14 +11,14 @@ public class MajorTest {
 
     @BeforeEach
     void setUp() {
-        major = new Major("Computer Science");
+        major = new Major();
     }
 
     @Test
     void testGetMajorName() {
         // Arrange
         String expectedMajorName = "Computer Science";
-
+        major.setMajorName(expectedMajorName);
         // Assert
         assertEquals(expectedMajorName, major.getMajorName());
     }
