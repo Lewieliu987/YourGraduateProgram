@@ -28,7 +28,13 @@ public class Main {
         dfu.readUsersFromCSV();
         DatabaseForUniversity dfuu = DatabaseForUniversity.getInstance();
         dfuu.readUniversitiesFromCSV();
-        String answer = scanner.nextLine();
+        String answer = "";
+        while (!(answer.equals("Log in") || answer.equals("Register"))) {
+            answer = scanner.nextLine();
+            if (!(answer.equals("Log in") || answer.equals("Register"))) {
+                System.out.println("Invalid input. Please enter 'Log in' or 'Register'.");
+            }
+        }
         if (answer.equals("Log in")) {// search user in DatabaseForUser using id & password
             System.out.println("Please enter your id:");
             int id = scanner.nextInt();
@@ -49,7 +55,7 @@ public class Main {
             testPasswordLoop: while (true) {
                 String password = scanner.next();
                 if (password.equals(user.getPassword())) {
-                    System.out.println(user.getPassword());
+                    System.out.println("PASSWORD: " + user.getPassword() + " CORRECT");
                     if (!user.getPermission()) {
                         // for user，use while loop，until exit
                         // studentServiceLoop:
@@ -133,25 +139,35 @@ public class Main {
                                         String operationCode = scanner.nextLine();
                                         switch (operationCode) {
                                             case "1":
-                                                System.out.println(
-                                                        "Please enter the user's name, password and role (Student/Admin):");
-                                                String n = scanner.nextLine().trim(); // user name
-                                                String p = scanner.nextLine().trim(); // user password
+                                                while (true) {
+                                                    System.out.println(
+                                                            "Please enter the user's name, password and role (Student/Admin):");
+                                                    String n = scanner.nextLine().trim(); // user name
+                                                    String p = scanner.nextLine().trim(); // user password
 
-                                                String r = scanner.nextLine().trim(); // user role
-                                                User newUser;
-                                                if (r.equals("Admin")) {
-                                                    newUser = new Admin(n, p);
-                                                } else if (r.equals("Student")) {
-                                                    newUser = new Student(n, p);
-                                                } else {
-                                                    System.out.println("Wrong role, please try again!");
-                                                    continue;
+                                                    String r = scanner.nextLine().trim(); // user role
+                                                    User newUser;
+                                                    if (r.equals("Admin")) {
+                                                        newUser = new Admin(n, p);
+                                                    } else if (r.equals("Student")) {
+                                                        newUser = new Student(n, p);
+                                                    } else {
+                                                        System.out.println("Wrong role, please try again!");
+                                                        continue;
+                                                    }
+                                                    dfu.addUser(newUser);
+                                                    System.out.println("User added successfully!");
+                                                    // break;
+                                                    System.out.println(
+                                                            "Press c to continue or other characters to quit this service");
+                                                    char continueorNot = scanner.nextLine().charAt(0);
+                                                    if (continueorNot == 'c') {
+                                                        continue;
+                                                    } else {
+                                                        break;
+                                                    }
                                                 }
-                                                dfu.addUser(newUser);
-                                                System.out.println("User added successfully!");
                                                 break;
-
                                             case "2":
                                                 while (true) {
                                                     System.out.println("Please enter the user's id:");
@@ -165,8 +181,8 @@ public class Main {
                                                     System.out.println("User deleted successfully!");
                                                     System.out.println(
                                                             "Press c to continue or other characters to quit this service");
-                                                    char continueorNot = scanner.nextLine().charAt(0);
-                                                    if (continueorNot == 'c') {
+                                                    char continueorNnot = scanner.nextLine().charAt(0);
+                                                    if (continueorNnot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
@@ -186,13 +202,13 @@ public class Main {
                                                     }
                                                     System.out.println("User found!");
                                                     System.out.println("User's id: " + userToSearch.getId()
-                                                            + "User's name: " + userToSearch.getUsername()
-                                                            + "User's password: " + userToSearch.getPassword()
-                                                            + "User's role: " + userToSearch.getRole());
+                                                            + " User's name: " + userToSearch.getUsername()
+                                                            + " User's password: " + userToSearch.getPassword()
+                                                            + " User's role: " + userToSearch.getRole());
                                                     System.out.println(
                                                             "Press c to continue or other characters to quit this service");
-                                                    char continueorNot = scanner.nextLine().charAt(0);
-                                                    if (continueorNot == 'c') {
+                                                    char continueornot = scanner.nextLine().charAt(0);
+                                                    if (continueornot == 'c') {
                                                         continue;
                                                     } else {
                                                         break;
@@ -257,7 +273,7 @@ public class Main {
             System.out.println("Please set your password");
             String password = scanner.next();
             while (true) {
-                System.out.println("Please enter your role");
+                System.out.println("Please enter your role (Student/Admin):");
                 String role = scanner.next();
                 // 用IdSystem生成id，然后存入DatabaseForUser数据库
                 if (role.equals("Admin")) {
@@ -274,7 +290,7 @@ public class Main {
                 }
             }
             dfu.writeUsersToCSV();
-            dfuu.writeUniversitiesToCSV();
+            // dfuu.writeUniversitiesToCSV();
             System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
         }
         scanner.close();

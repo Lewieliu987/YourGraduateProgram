@@ -38,30 +38,113 @@ public class UserInputStudent implements UserInput {
         student.setMyHomeSchoolRank(homeSchoolRank);
 
         // GPA
+        // System.out.println();
+        // System.out.println("Please enter your CGPA(Should be in form in CURENT
+        // CGPA/FULL GPA):");
+        // String CGPA = scanner.next();
+        // String[] parts = CGPA.split("/");
+        // if (parts.length != 2) {
+        // throw new IllegalArgumentException("Invalid GPA format: " + CGPA);
+        // }
+        // float cgpa = Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]);
+        // System.out.println("Please enter your Major GPA(Should be in form in CURENT
+        // CGPA/FULL GPA):");
+        // String major_GPA = scanner.next();
+        // String[] part = major_GPA.split("/");
+        // if (part.length != 2) {
+        // throw new IllegalArgumentException("Invalid GPA format: " + major_GPA);
+        // }
+        // float mgpa = Float.parseFloat(part[0]) / Float.parseFloat(part[1]);
+
+        // System.out.println();
+        // System.out.println("Please enter your CGPA(Should be in form CURRENT
+        // CGPA/FULL GPA):");
+        // String CGPA = scanner.next();
+        // String[] parts = CGPA.split("/");
+        // float cgpa = 0;
+        // while (parts.length != 2) {
+        // try {
+        // cgpa = Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]);
+        // } catch (NumberFormatException e) {
+        // System.out
+        // .println("Invalid GPA format: " + CGPA + ". Please re-enter in the form
+        // CURRENT GPA/FULL GPA:");
+        // CGPA = scanner.next();
+        // parts = CGPA.split("/");
+        // }
+        // }
+
         System.out.println();
-        System.out.println("Please enter your CGPA:");
+        System.out.println("Please enter your CGPA(Should be in form CURRENT CGPA/FULL GPA):");
         String CGPA = scanner.next();
         String[] parts = CGPA.split("/");
-        if (parts.length != 2) {
-            throw new IllegalArgumentException("Invalid GPA format: " + CGPA);
+        float cgpa = 0;
+        while (true) {
+            if (parts.length != 2) {
+                System.out
+                        .println("Invalid GPA format: " + CGPA + ". Please re-enter in the form CURRENT GPA/FULL GPA:");
+                CGPA = scanner.next();
+                parts = CGPA.split("/");
+            } else {
+                try {
+                    cgpa = Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println(
+                            "Invalid GPA format: " + CGPA + ". Please re-enter in the form CURRENT GPA/FULL GPA:");
+                    CGPA = scanner.next();
+                    parts = CGPA.split("/");
+                }
+            }
         }
-        float cgpa = Float.parseFloat(parts[0]) / Float.parseFloat(parts[1]);
-        System.out.println("Please enter your Major GPA:");
+
+        // System.out.println("Please enter your Major GPA(Should be in form CURRENT
+        // CGPA/FULL GPA):");
+        // String major_GPA = scanner.next();
+        // String[] part = major_GPA.split("/");
+        // float mgpa = 0;
+        // while (part.length != 2) {
+        // try {
+        // mgpa = Float.parseFloat(part[0]) / Float.parseFloat(part[1]);
+        // } catch (NumberFormatException e) {
+        // System.out.println(
+        // "Invalid GPA format: " + major_GPA + ". Please re-enter in the form CURRENT
+        // GPA/FULL GPA:");
+        // major_GPA = scanner.next();
+        // part = major_GPA.split("/");
+        // }
+        // }
+        System.out.println("Please enter your Major GPA(Should be in form CURRENT GPA/FULL GPA):");
         String major_GPA = scanner.next();
         String[] part = major_GPA.split("/");
-        if (part.length != 2) {
-            throw new IllegalArgumentException("Invalid GPA format: " + major_GPA);
+        float mgpa = 0;
+        while (true) {
+            if (part.length != 2) {
+                System.out.println(
+                        "Invalid GPA format: " + major_GPA + ". Please re-enter in the form CURRENT GPA/FULL GPA:");
+                major_GPA = scanner.next();
+                part = major_GPA.split("/");
+            } else {
+                try {
+                    mgpa = Float.parseFloat(part[0]) / Float.parseFloat(part[1]);
+                    break;
+                } catch (NumberFormatException e) {
+                    System.out.println(
+                            "Invalid GPA format: " + major_GPA + ". Please re-enter in the form CURRENT GPA/FULL GPA:");
+                    major_GPA = scanner.next();
+                    part = major_GPA.split("/");
+                }
+            }
         }
-        float mgpa = Float.parseFloat(part[0]) / Float.parseFloat(part[1]);
         Gpa gpa = new Gpa(cgpa, mgpa);
         student.setMyGpa(gpa);
 
         // language scores
-        System.out.println("Please enter IELTS Score:");
+        System.out.println("Please enter IELTS Score(should be in range of 0-9):");
         float IELTS = scanner.nextFloat();
-        System.out.println("Please enter TOEFL Score:");
+        System.out.println("Please enter TOEFL Score(should be in range of 0-120):");
         float TOEFL = scanner.nextFloat();
-        System.out.println("Please enter GRE Score:");
+        System.out.println("Please enter GRE Score(should be in range of 0-340):");
         float GRE = scanner.nextFloat();
         LanguageScore languageScore = new LanguageScore(IELTS, TOEFL, GRE);
         student.setMyLanguageScore(languageScore);
