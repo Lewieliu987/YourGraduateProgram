@@ -99,13 +99,13 @@ public class Predictor extends NaiveBayes {
 
         this.update_prob();
 
-        int index = 1;
+        int index = 0;
         for(int i =0;i<5;i++){
             if(posterior[i]>posterior[index]){
                 index = i;
             }
         }
 
-        return index;
+        return index+1;
     }
 }
