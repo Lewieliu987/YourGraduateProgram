@@ -291,11 +291,7 @@ public class Main {
                 }
             }
             dfu.writeUsersToCSV();
-<<<<<<< HEAD
-            // dfuu.writeUniversitiesToCSV();
-=======
-            //dfuu.writeUniversitiesToCSV();
->>>>>>> branch 'for_test_cases_2' of git@github.com:Lewieliu987/YourGraduateProgram.git
+
             System.out.println("Register successfully, you id is " + user.getId() + ", please restart the system!");
         }
         scanner.close();

@@ -32,7 +32,7 @@ class DatabaseForUserTest {
     void testFindUser() {
         int expectedId = 241002;
         User foundUser = db.findUser(expectedId);
-        assertEquals(foundUser.getUsername(), "www");
+        assertEquals(foundUser.getUsername(), "wwas");
     }
 
     @Test

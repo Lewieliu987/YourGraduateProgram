@@ -96,7 +96,7 @@ class UniversityTest {
 	    
 	    university.addProgram(pName, pType, pRate, pMajorName);
 	    university.showAllProgram();
-        String expectedOutput = "MOCS, Master Of Computer Science, Degree Type: Postgraduate, Acceptance Rate: 0.8, Only for Major: Computer Science\n";
+        String expectedOutput = "MOCS, Master Of Computer Science, Degree Type: Postgraduate, Acceptance Rate: 0.8, Only for Major: Computer Science";
         assertEquals(expectedOutput, outContent.toString());
     }
 

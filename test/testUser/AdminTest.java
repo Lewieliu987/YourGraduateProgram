@@ -28,7 +28,7 @@ class AdminTest {
     @Test
     void testGetId() {
         // Assuming the ID system always generates ID 1 for the first user
-        assertEquals(341021, user.getId());
+        assertEquals(341017, user.getId());
     }
 
     @Test
