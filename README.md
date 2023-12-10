@@ -10,12 +10,18 @@ In addition to empowering applicants, our system also caters to administrators w
 
 By combining the power of sophisticated machine learning techniques with an extensive and meticulously maintained database, our project provides a comprehensive solution that assists applicants in making informed decisions about their academic journeys. Simultaneously, administrators can efficiently manage and update the system, ensuring its accuracy and reliability over time. 
 
-### User Guideline 
+### Developer Guideline 
 Please use SSH to clone the project  
 Please add your code to your local repo before commit  
 Remember to pull(update) the project before any updates
 Please enter "git remote update origin --prune" in terminal if you cannot find branches  
 Please enter "find . -name '*.java' | xargs wc -l" to check the number of java lines
+
+### Usage Guideline
+You can follow the steps below to quickly get up and running this java project:
+1. use git clone to clone all the files to your local repository
+2. after opening it with an IDE, find main.java and run it
+3. all the information and instruction will be shown in the terminal
 
 ### File Structure Description
 ./file: necessary csv files for I/O system, including pre-trained data sets & newest QS ranking information  
