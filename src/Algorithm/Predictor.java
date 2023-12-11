@@ -103,4 +103,15 @@ public class Predictor extends NaiveBayes {
 
         return index + 1;
     }
+
+    //testing purposes
+    public double[] getPosterior() {
+    	return posterior;
+    }
+    public WeightedGPA getWGPA() {
+    	return wgpa;
+    }
+    public WeightedOthers getWothers() {
+    	return wothers;
+    }
 }

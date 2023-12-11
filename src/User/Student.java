@@ -71,7 +71,7 @@ public class Student extends User {
         }
         ;
     }
-
+    
     // Setter method for preferTuitionFee
     public void setMyPreferTuitionFee(double tuitionFee) {
         this.preferTuitionFee = tuitionFee;
@@ -166,5 +166,18 @@ public class Student extends User {
 
     public int getTier() {
         return this.expected_tier;
+    }
+
+    //testing purposes
+    public String getPreferRegion() {
+    	return preferRegion;
+    }
+    
+    public double getPreferTuitionFee() {
+    	return preferTuitionFee;
+    }
+
+    public int getHomeSchoolRank() {
+        return homeSchoolRank;
     }
 }

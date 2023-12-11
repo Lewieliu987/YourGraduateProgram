@@ -121,12 +121,14 @@ public class Trainer extends NaiveBayes {
     // update ps to parameters database
     public void updateParameters() {
         try (PrintWriter writer = new PrintWriter(new FileWriter("./file/parameters.csv", false))) {
-            writer.println("tier,P(b1|tier),P(b2|tier),P(b3|tier),P(b4|tier),P(b5|tier),mean(gpa),sd(gpa),mean(other),mean(others),prior");
-            for (int i=1;i<6;i++) {
-                Parameter p = this.getps().get(i-1);
-                writer.println(p.getTier() + "," + p.getP1() + "," + p.getP2() + "," + p.getP3()+ "," 
-                 + p.getP4()+ "," + p.getP5()+","+p.getmeanGPA()+","+p.getsdGPA()+","+p.getmeanOthers()+","+p.getsdOthers()
-                 +","+p.getPrior());
+            writer.println(
+                    "tier,P(b1|tier),P(b2|tier),P(b3|tier),P(b4|tier),P(b5|tier),mean(gpa),sd(gpa),mean(other),mean(others),prior");
+            for (int i = 1; i < 6; i++) {
+                Parameter p = this.getps().get(i - 1);
+                writer.println(p.getTier() + "," + p.getP1() + "," + p.getP2() + "," + p.getP3() + ","
+                        + p.getP4() + "," + p.getP5() + "," + p.getmeanGPA() + "," + p.getsdGPA() + ","
+                        + p.getmeanOthers() + "," + p.getsdOthers()
+                        + "," + p.getPrior());
             }
         } catch (IOException e) {
             e.printStackTrace();

@@ -17,4 +17,9 @@ public class Recommendation {
     public int get_number_of_recommendations() {
         return recommendations.size();
     }
+
+    //testing purposes
+    public ArrayList<EveryRecommendation> getRecommendations() {
+    	return recommendations;
+    }
 }

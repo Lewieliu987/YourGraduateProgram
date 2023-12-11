@@ -17,4 +17,9 @@ public class Internship {
     public int getNumInternships() {
         return internships.size();
     }
+
+    //testing purposes
+    public ArrayList<EveryInternship> getInternships() {
+    	return internships;
+	}
 }

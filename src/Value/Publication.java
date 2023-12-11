@@ -17,4 +17,9 @@ public class Publication {
     public int getPublicationCount() {
         return publications.size();
     }
+    
+    //testing purposes
+    public ArrayList<EveryPublication> getPublications() {
+    	return publications;
+    }
 }
