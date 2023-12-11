@@ -28,14 +28,14 @@ public class Predictor extends NaiveBayes {
         // load parameters storded in database
         super();
         posterior = new double[5];
-        for(int i=0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             posterior[i] = this.getps().get(i).getPrior();
         }
     }
 
     // interface to read
     public void read(int tier, double cgpa, double mgpa, int num1,
-                    int num2, int num3){
+            int num2, int num3) {
         tier_background_university = tier;
         CGPA = cgpa;
         MGPA = mgpa;
@@ -45,67 +45,62 @@ public class Predictor extends NaiveBayes {
 
         wgpa = new WeightedGPA(CGPA, MGPA);
         wothers = new WeightedOthers(num_LoR, num_intern, num_paper);
-        
+
     }
 
-    public void update_prob(){
+    public void update_prob() {
         // update the prob for 5 tiers
 
         // evidence: background_tier
-        for (int i =0; i<5;i++){
+        for (int i = 0; i < 5; i++) {
             // tier
-            if(tier_background_university == 1){
+            if (tier_background_university == 1) {
                 posterior[i] *= this.getps().get(i).getP1();
-            }
-            else if(tier_background_university == 2){
+            } else if (tier_background_university == 2) {
                 posterior[i] *= this.getps().get(i).getP2();
-            }
-            else if(tier_background_university == 3){
+            } else if (tier_background_university == 3) {
                 posterior[i] *= this.getps().get(i).getP3();
-            }
-            else if(tier_background_university == 4){
+            } else if (tier_background_university == 4) {
                 posterior[i] *= this.getps().get(i).getP4();
-            }
-            else if(tier_background_university == 5){
+            } else if (tier_background_university == 5) {
                 posterior[i] *= this.getps().get(i).getP5();
             }
-            
+
         }
 
         // evidence: Weighted GPA
-        for (int i = 0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             ComputerGuassian g = new ComputerGuassian();
-            posterior[i] *= g.getP(this.getps().get(i).getmeanGPA(), 
-                                   this.getps().get(i).getsdGPA(), 
-                                   wgpa.getWeighted());
+            posterior[i] *= g.getP(this.getps().get(i).getmeanGPA(),
+                    this.getps().get(i).getsdGPA(),
+                    wgpa.getWeighted());
         }
 
         // evidence: Weighted Others
-        for (int i = 0;i<5;i++){
+        for (int i = 0; i < 5; i++) {
             ComputerGuassian g = new ComputerGuassian();
-            posterior[i] *= g.getP(this.getps().get(i).getmeanOthers(), 
-                                   this.getps().get(i).getsdOthers(), 
-                                   wothers.getWeighted());
+            posterior[i] *= g.getP(this.getps().get(i).getmeanOthers(),
+                    this.getps().get(i).getsdOthers(),
+                    wothers.getWeighted());
         }
-
 
     }
 
     // return the index of tier with the largest posterior
     // pass the paramters
     public int getMaxProb(int tier, double cgpa, double mgpa, int num1,
-                    int num2, int num3){
+            int num2, int num3) {
         this.read(tier, cgpa, mgpa, num1, num2, num3);
 
         this.update_prob();
 
         int index = 0;
-        for(int i =0;i<5;i++){
-            if(posterior[i]>posterior[index]){
+        for (int i = 0; i < 5; i++) {
+            if (posterior[i] > posterior[index]) {
                 index = i;
             }
         }
 
-        return index+1;
+        return index + 1;
     }
 }

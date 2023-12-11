@@ -72,7 +72,7 @@ public class Trainer extends NaiveBayes {
 
     // train ps bases on the current database
     public void trainParameters() {
-        System.out.println("Retrained conditional probability:");
+        // System.out.println("Retrained conditional probability:");
 
         for (int x = 0; x < 5; x++) {
             // update conditional prob
@@ -81,29 +81,41 @@ public class Trainer extends NaiveBayes {
             this.getps().get(x).setP3(fiveDataTiers.get(x).computeP3());
             this.getps().get(x).setP4(fiveDataTiers.get(x).computeP4());
             this.getps().get(x).setP5(fiveDataTiers.get(x).computeP5());
-            System.out.println("P(background tier=1|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getP1());
-            System.out.println("P(background tier=2|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getP2());
-            System.out.println("P(background tier=3|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getP3());
-            System.out.println("P(background tier=4|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getP4());
-            System.out.println("P(background tier=5|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getP5());
-
+            /*
+             * System.out.println("P(background tier=1|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getP1());
+             * System.out.println("P(background tier=2|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getP2());
+             * System.out.println("P(background tier=3|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getP3());
+             * System.out.println("P(background tier=4|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getP4());
+             * System.out.println("P(background tier=5|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getP5());
+             */
             // update guassian for GPA
             this.getps().get(x).setMeanGPA(fiveDataTiers.get(x).computeMeanG());
             this.getps().get(x).setsdGPA(fiveDataTiers.get(x).computeSdG());
-            System.out
-                    .println("Mean(weightedGPA|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getmeanGPA());
-            System.out.println("SD(weightedGPA|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getsdGPA());
+            /*
+             * System.out.println("Mean(weightedGPA|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getmeanGPA());
+             * System.out.println("SD(weightedGPA|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getsdGPA());
+             */
 
             // update guassian for Others
             this.getps().get(x).setMeanOthers(fiveDataTiers.get(x).computeMeanO());
             this.getps().get(x).setsdOthers(fiveDataTiers.get(x).computeSdO());
-            System.out.println(
-                    "Mean(weightedOthers|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getmeanOthers());
-            System.out.println(
-                    "SD(weightedOthers|admission tier=" + (x + 1) + ") = " + this.getps().get(x).getsdOthers());
+            /*
+             * System.out.println("Mean(weightedOthers|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getmeanOthers());
+             * System.out.println("SD(weightedOthers|admission tier=" + (x + 1) + ") = " +
+             * this.getps().get(x).getsdOthers());
+             */
         }
 
-        System.out.println("Finish retraining the parameter based on the current database.");
+        // System.out.println("Finish retraining the parameter based on the current
+        // database.");
     }
 
     // update ps to parameters database

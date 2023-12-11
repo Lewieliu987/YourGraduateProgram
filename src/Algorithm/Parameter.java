@@ -126,7 +126,7 @@ public class Parameter {
         sdOthers = sd;
     }
 
-    public void setPrior(double p){
+    public void setPrior(double p) {
         prior = p;
     }
 

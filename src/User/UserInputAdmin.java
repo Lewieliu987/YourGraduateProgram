@@ -12,7 +12,7 @@ public class UserInputAdmin implements UserInput {
         String name = scanner.next();
         user.setName(name);
 
-        System.out.println("Design admin password");
+        System.out.println("Enter admin password");
         String passwords = scanner.next();
         user.setPassword(passwords);
 

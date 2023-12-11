@@ -59,18 +59,21 @@ public class DatabaseForUniversity extends Database {
         }
     }
 
-    // public void writeUniversitiesToCSV() {
-    // // 将AllUniversities中的大学信息写入CSV文件
-    // try (PrintWriter writer = new PrintWriter(new
-    // FileWriter("./file/universities.csv", false))) {
-    // for (University university : AllUniversities) {
-    // writer.println(university.getName() + "," + university.getRegion() + "," +
-    // university.getTier());
-    // }
-    // } catch (IOException e) {
-    // e.printStackTrace();
-    // }
-    // }
+    /*
+     * public void writeUniversitiesToCSV() {
+     * // 将AllUniversities中的大学信息写入CSV文件
+     * try (PrintWriter writer = new PrintWriter(new
+     * FileWriter("./file/universities.csv", false))) {
+     * for (University university : AllUniversities) {
+     * writer.println(university.getName() + "," + university.getRegion() + "," +
+     * university.getTier());
+     * }
+     * } catch (IOException e) {
+     * e.printStackTrace();
+     * }
+     * }
+     */
+
     public void writeUniversitiesToCSV() {
         // 将AllUniversities中的大学信息写入CSV文件
         try (PrintWriter writer = new PrintWriter(new FileWriter("./file/universities.csv", false))) {

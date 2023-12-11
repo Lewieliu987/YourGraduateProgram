@@ -1,8 +1,6 @@
 package Database;
 
 import java.util.ArrayList;
-
-import Exceptions.DuplicateUserException;
 import Exceptions.UserNotFoundException;
 
 import java.io.BufferedReader;

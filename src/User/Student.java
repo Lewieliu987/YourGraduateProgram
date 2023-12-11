@@ -132,10 +132,12 @@ public class Student extends User {
         } catch (IOException e) {
             System.err.println("Error reading file: " + e.getMessage());
         }
-        // for (Map.Entry<Integer, String> entry : universityMap.entrySet()) {
-        // System.out.println("Key: " + entry.getKey() + ", Value: " +
-        // entry.getValue());
-        // }
+        /*
+         * for (Map.Entry<Integer, String> entry : universityMap.entrySet()) {
+         * System.out.println("Key: " + entry.getKey() + ", Value: " +
+         * entry.getValue());
+         * }
+         */
         // Print the university name
         UniversityFilter.printUniversitiesByTier(universityMap, expected_tier, preferRegion);
     }
